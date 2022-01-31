@@ -148,7 +148,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Whole year'],
                 ['Tenderdagi loyihalar', {{$tender}}],
-                ['Shartnomali loyihalr', {{$shartnoma}}],
+                ['Shartnomali loyihalar', {{$shartnoma}}],
                 ['Auksiondagi loyihalar', {{$auksion}}],
                 ['Ekologik ko`rikdagi loyihalar', {{$auksion}}],
                 ['Realizatsiya qilingan loyihalar', {{$real}}],

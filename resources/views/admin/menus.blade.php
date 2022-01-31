@@ -58,6 +58,11 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    @php
+                        $all = App\Models\Document::count();
+                        $news = App\Models\Document::where('status', 'yangi')->count();
+                        $reject = App\Models\Document::where('status', 'reject')->count();
+                    @endphp
                     <li class="nav-item">
                         <a href="{{route('admin.documents.index')}}"
                            class="nav-link {{ (request()->is('admin/document*'))? 'active':''}}">

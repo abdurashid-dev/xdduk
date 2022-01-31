@@ -17,12 +17,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $all = Document::count();
-        $news = Document::where('status', 'new')->count();
-        $reject = Document::where('status', 'reject')->count();
         $offers = Offer::orderByDesc('created_at')->get();
 //        $users = User::where('role', 'user2')->where('is_active',1)->get();
-        return view('offers.index', compact('offers', 'all', 'news', 'reject'));
+        return view('offers.index', compact('offers'));
     }
 
     /**
@@ -32,11 +29,8 @@ class OfferController extends Controller
      */
     public function create()
     {
-        $all = Document::count();
-        $news = Document::where('status', 'new')->count();
-        $reject = Document::where('status', 'reject')->count();
         $users = User::where('role', 'user2')->where('is_active', 1)->get();
-        return view('offers.create', compact('users', 'all', 'news', 'reject'));
+        return view('offers.create', compact('users'));
     }
 
     /**
@@ -71,10 +65,7 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        $all = Document::count();
-        $news = Document::where('status', 'new')->count();
-        $reject = Document::where('status', 'reject')->count();
-        return view('offers.show', compact('offer', 'all', 'news', 'reject'));
+        return view('offers.show', compact('offer'));
     }
 
     /**
@@ -85,12 +76,9 @@ class OfferController extends Controller
      */
     public function edit(Offer $offer)
     {
-        $all = Document::count();
-        $news = Document::where('status', 'new')->count();
-        $reject = Document::where('status', 'reject')->count();
         $users = User::where('role', 'user2')->where('is_active', 1)->get();
         if ($offer->status == 'tender' || $offer->status == 'shartnoma') {
-            return view('offers.edit', compact('offer', 'users', 'all', 'news', 'reject'));
+            return view('offers.edit', compact('offer', 'users'));
         } else {
             return abort(404);
         }
