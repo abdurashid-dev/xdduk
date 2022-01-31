@@ -108,7 +108,7 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                     <ul class="products-list product-list-in-card pl-2 pr-2">
-                        @foreach($news as $new)
+                        @foreach($newdocs as $new)
                             <li class="item">
                                 <div class="product-img">
                                     <img src="{{asset('defaultAvatar.png')}}" alt="Product Image" class="img-size-50">

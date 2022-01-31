@@ -48,9 +48,9 @@
                     <p>Hujjatlarni shakllantirish</p>
                 </a>
             </li>
-            <li class="nav-item @if(request()->is('admin/document*') || request()->is('admin/pages*')) menu-open @endif">
+            <li class="nav-item @if(request()->is('admin/document*') || request()->is('admin/new*') || request()->is('admin/reject*')))  menu-open @endif">
                 <a href="#"
-                   class="nav-link @if (request()->is('admin/document*') || request()->is('admin/pages*')) active @endif">
+                   class="nav-link @if (request()->is('admin/document*') || request()->is('admin/new*') || request()->is('admin/reject*')) active @endif">
                     <i class="nav-icon fas fa-file"></i>
                     <p>
                         Loyihalar
@@ -65,6 +65,21 @@
                             <p>Barcha loyihalar <span class="badge badge-primary float-right">{{$all}}</span></p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.news')}}"
+                           class="nav-link {{ (request()->is('admin/new/documents'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Yangi loyihalar <span class="badge badge-primary float-right">{{$news}}</span></p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.reject')}}"
+                           class="nav-link {{ (request()->is('admin/reject/documents'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Rad etilgan loyihalar <span class="badge badge-primary float-right">{{$reject}}</span>
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -74,6 +89,15 @@
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         MCHJ tashkilotlar
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin.users.trash')}}"
+                   class="nav-link {{(request()->is('admin/trash/user*'))? 'active':''}}">
+                    <i class="nav-icon fas fa-trash"></i>
+                    <p>
+                        Arxiv
                     </p>
                 </a>
             </li>

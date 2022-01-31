@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use App\Models\Document;
 use App\Models\Offer;
 use App\Models\User;
@@ -96,15 +97,16 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::middleware('super')->group(function () {
         Route::get('/dashboard', function () {
             $all = Document::count();
-//            dd($all);
+            $news = Document::where('status', 'yangi')->count();
+            $reject = Document::where('status', 'rad etilgan')->count();
             $users = User::where('role', '!=', 'user1')->get();
             $tender = Offer::where('status', '=', 'tender')->count();
             $shartnoma = Offer::where('status', '=', 'shartnoma')->count();
             $ecokorik = Offer::where('status', '=', 'ecokorik')->count();
             $auksion = Offer::where('status', '=', 'auksion')->count();
             $real = Offer::where('status', '=', 'real')->count();
-            $news = Document::with('user', 'offer')->where('status', '=', 'yangi')->get();
-            return view('admin.super', compact('users', 'tender', 'shartnoma', 'ecokorik', 'auksion', 'real', 'news', 'all'));
+            $newdocs = Document::with('user', 'offer')->where('status', '=', 'yangi')->get();
+            return view('admin.super', compact('users', 'tender', 'shartnoma', 'ecokorik', 'auksion', 'real', 'news', 'all', 'reject', 'newdocs'));
         })->name('dashboard');
         Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
         Route::post('/changeData', [AdminController::class, 'data'])->name('data');
@@ -113,10 +115,17 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         Route::post('/users/{id}/role', [UsersController::class, 'role'])->name('users.role');
         Route::post('/user/{id}/password', [UsersController::class, 'password'])->name('users.password');
         Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
+        Route::post('/documents/{id}/status', [DocumentController::class, 'status'])->name('documents.status');
+        Route::get('/new/documents', [DocumentController::class, 'news'])->name('documents.news');
+        Route::get('/reject/documents', [DocumentController::class, 'reject'])->name('documents.reject');
         Route::get('document/{id}', [DocumentController::class, 'show'])->name('documents.show');
         Route::put('document/{id}/update', [DocumentController::class, 'update'])->name('documents.update');
-        Route::resource('/offers', \App\Http\Controllers\OfferController::class);
+        Route::resource('/offers', OfferController::class);
+        Route::post('/offers/{id}/status', [OfferController::class, 'status'])->name('offers.status');
         Route::resource('/users', UsersController::class);
+        Route::get('trash/users', [UsersController::class, 'trash'])->name('users.trash');
+        Route::get('trash/user/{id}', [UsersController::class, 'trashshow'])->name('users.trashshow');
+        Route::post('trash/restore/{id}', [UsersController::class, 'restore'])->name('users.restore');
         Route::post('/user-status/{id}', [UsersController::class, 'status'])->name('userStatus');
     });
 });

@@ -21,8 +21,10 @@ class UsersController extends Controller
     public function index(): View
     {
         $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'reject')->count();
         $users = User::where('role', 'user2')->orderByDesc('created_at')->paginate(20);
-        return view('users.index', compact('users', 'all'));
+        return view('users.index', compact('users', 'all', 'news', 'reject'));
     }
 
     /**
@@ -32,8 +34,11 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'reject')->count();
         $offers = Offer::where('is_active', 1)->where('user_id', null)->get();
-        return view('users.create', compact('offers'));
+        return view('users.create', compact('offers', 'all', 'news', 'reject'));
     }
 
     /**
@@ -62,8 +67,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'reject')->count();
         $user = User::with('offer')->findOrFail($id);
-        return view('users.show', compact('user'));
+        return view('users.show', compact('user', 'all', 'news', 'reject'));
     }
 
     /**
@@ -74,9 +82,12 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'reject')->count();
         $user = User::findOrFail($id);
         $offers = Offer::where('is_active', 1)->where('user_id', null)->OrWhere('user_id', $id)->get();
-        return view('users.edit', compact('user', 'offers'));
+        return view('users.edit', compact('user', 'offers', 'all', 'news', 'reject'));
     }
 
     /**
@@ -116,17 +127,16 @@ class UsersController extends Controller
     public function destroy($id): RedirectResponse
     {
         $user = User::findOrFail($id);
-        $documents = Document::where('user_id', $id)->get();
-        foreach ($documents as $document) {
-            unlink($document->file);
-            $document->delete();
+        $offers = Offer::where('user_id', $user->id)->get();
+        foreach ($offers as $offer) {
+            $offer->update([
+                'user_id' => null,
+                'status' => 'tender'
+            ]);
         }
-        $offer = Offer::where('user_id', $user->id)->first();
-        $offer->update([
-            'user_id' => null,
-            'status' => 'tender'
+        $user->update([
+            'role' => 'deleted'
         ]);
-        $user->delete();
         return redirect()->route('admin.users.index')->with('message', 'O`chirildi!');
     }
 
@@ -168,5 +178,32 @@ class UsersController extends Controller
             'password' => Hash::make($data['password'])
         ]);
         return redirect()->route('admin.users.index')->with('message', 'Parol o`zgardi !');
+    }
+
+    public function trash()
+    {
+        $all = Document::count();
+        $news = Document::where('status', 'news')->count();
+        $reject = Document::where('status', 'reject')->count();
+        $users = User::where('role', 'deleted')->get();
+        return view('trash.trash', compact('users', 'all', 'news', 'reject'));
+    }
+
+    public function trashshow($id)
+    {
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'reject')->count();
+        $user = User::findOrFail($id);
+        $documents = Document::with('offer')->where('user_id', $id)->get();
+        return view('trash.view', compact('user', 'all', 'news', 'reject', 'documents'));
+    }
+
+    public function restore($id)
+    {
+        User::findOrFail($id)->update([
+            'role' => 'user2'
+        ]);
+        return back()->with('message', 'Tiklandi!');
     }
 }

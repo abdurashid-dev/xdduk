@@ -37,7 +37,7 @@
                 @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-                <button type="submit" class="btn btn-primary">Qo'shish</button>
+                <button type="submit" class="btn btn-primary">Tahrirlash</button>
                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editPassword">Parolni o'zgartirish</button>
             </form>
         </div>

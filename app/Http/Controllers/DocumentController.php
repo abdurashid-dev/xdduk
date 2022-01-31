@@ -14,7 +14,9 @@ class DocumentController extends Controller
     {
         $documents = Document::with('user', 'offer')->orderByDesc('created_at')->get();
         $all = Document::count();
-        return view('documents.index', compact('documents', 'all'));
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'rad etilgan')->count();
+        return view('documents.index', compact('documents', 'all', 'news', 'reject'));
     }
 
     public function show($id)
@@ -23,7 +25,10 @@ class DocumentController extends Controller
         $user = User::with('offer')->where('id', $document->user_id)->first();
         $comments = Comment::where('doc_id', $document->id)->get();
         $document->checkStatus();
-        return view('documents.show', compact('document', 'user', 'comments'));
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'rad etilgan')->count();
+        return view('documents.show', compact('document', 'user', 'comments', 'all', 'news', 'reject'));
     }
 
     public function update(Request $request, $id)
@@ -49,5 +54,23 @@ class DocumentController extends Controller
         }
         $document->update(['comment' => $request->comment]);
         return redirect()->route('admin.documents.index')->with('message', 'Status o`zgartirildi !');
+    }
+
+    public function news()
+    {
+        $documents = Document::with('user', 'offer')->where('status', 'yangi')->orderByDesc('created_at')->get();
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'rad etilgan')->count();
+        return view('documents.news', compact('documents', 'all', 'news', 'reject'));
+    }
+
+    public function reject()
+    {
+        $documents = Document::with('user', 'offer')->where('status', 'rad etilgan')->orderByDesc('created_at')->get();
+        $all = Document::count();
+        $news = Document::where('status', 'yangi')->count();
+        $reject = Document::where('status', 'rad etilgan')->count();
+        return view('documents.reject', compact('documents', 'all', 'news', 'reject'));
     }
 }

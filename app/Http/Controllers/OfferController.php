@@ -18,9 +18,11 @@ class OfferController extends Controller
     public function index()
     {
         $all = Document::count();
+        $news = Document::where('status', 'new')->count();
+        $reject = Document::where('status', 'reject')->count();
         $offers = Offer::orderByDesc('created_at')->get();
 //        $users = User::where('role', 'user2')->where('is_active',1)->get();
-        return view('offers.index', compact('offers', 'all'));
+        return view('offers.index', compact('offers', 'all', 'news', 'reject'));
     }
 
     /**
@@ -127,5 +129,19 @@ class OfferController extends Controller
     {
         $offer->delete();
         return redirect()->route('admin.offers.index')->with('message', 'O`chirildi');
+    }
+
+    public function status($id)
+    {
+        $status = Offer::findOrFail($id);
+        if ($status->is_active == 1) {
+            $status->update(['is_active' => 0]);
+            session()->flash('inactive', 'Inactive !');
+            return back();
+        } else {
+            $status->update(['is_active' => 1]);
+            session()->flash('message', 'Active !');
+            return back();
+        }
     }
 }

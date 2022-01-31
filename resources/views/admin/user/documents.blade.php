@@ -33,7 +33,7 @@
                             @if($user->offer->count() > 0)
                                 <td>{{$document->offer['name_'.session('locale')]}}</td>
                             @else
-                                <td>{{__('words.no_work')}}</td>
+                                <td>Biriktirilgan ish topilmadi!</td>
                             @endif
                             <th>
                                 {!! $document->getOfferStatus() !!}
