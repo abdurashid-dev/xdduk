@@ -13,7 +13,8 @@ class DocumentController extends Controller
     public function index()
     {
         $documents = Document::with('user', 'offer')->orderByDesc('created_at')->get();
-        return view('documents.index', compact('documents'));
+        $all = Document::count();
+        return view('documents.index', compact('documents', 'all'));
     }
 
     public function show($id)

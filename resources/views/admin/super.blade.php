@@ -14,7 +14,7 @@
                         <div class="inner">
                             <h3>{{\App\Models\Document::where('status','yangi')->count()}}</h3>
 
-                            <p>Yangi hujjatlar</p>
+                            <p>Yangi loyihalar</p>
                         </div>
                         <div class="icon">
                             <i class="far fa-folder-open"></i>
@@ -97,7 +97,7 @@
             <!-- PRODUCT LIST -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Yangi hujjatlar</h3>
+                    <h3 class="card-title">Yangi loyihalar</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -128,7 +128,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-center">
-                    <a href="{{route('admin.documents.index')}}" class="uppercase">Barcha hujjatlarni ko`rish</a>
+                    <a href="{{route('admin.documents.index')}}" class="uppercase">Barcha loyihalarni ko`rish</a>
                 </div>
                 <!-- /.card-footer -->
             </div>

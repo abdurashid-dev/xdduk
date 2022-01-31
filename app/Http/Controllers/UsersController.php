@@ -20,8 +20,9 @@ class UsersController extends Controller
      */
     public function index(): View
     {
+        $all = Document::count();
         $users = User::where('role', 'user2')->orderByDesc('created_at')->paginate(20);
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users', 'all'));
     }
 
     /**

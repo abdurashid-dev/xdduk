@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,9 +17,10 @@ class OfferController extends Controller
      */
     public function index()
     {
+        $all = Document::count();
         $offers = Offer::orderByDesc('created_at')->get();
 //        $users = User::where('role', 'user2')->where('is_active',1)->get();
-        return view('offers.index', compact('offers'));
+        return view('offers.index', compact('offers', 'all'));
     }
 
     /**

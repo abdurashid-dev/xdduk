@@ -95,6 +95,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //super admin
     Route::middleware('super')->group(function () {
         Route::get('/dashboard', function () {
+            $all = Document::count();
+//            dd($all);
             $users = User::where('role', '!=', 'user1')->get();
             $tender = Offer::where('status', '=', 'tender')->count();
             $shartnoma = Offer::where('status', '=', 'shartnoma')->count();
@@ -102,7 +104,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
             $auksion = Offer::where('status', '=', 'auksion')->count();
             $real = Offer::where('status', '=', 'real')->count();
             $news = Document::with('user', 'offer')->where('status', '=', 'yangi')->get();
-            return view('admin.super', compact('users', 'tender', 'shartnoma', 'ecokorik', 'auksion', 'real', 'news'));
+            return view('admin.super', compact('users', 'tender', 'shartnoma', 'ecokorik', 'auksion', 'real', 'news', 'all'));
         })->name('dashboard');
         Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
         Route::post('/changeData', [AdminController::class, 'data'])->name('data');

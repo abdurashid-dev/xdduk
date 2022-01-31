@@ -48,13 +48,26 @@
                     <p>Hujjatlarni shakllantirish</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{route('admin.documents.index')}}"
-                   class="nav-link {{ (request()->is('admin/document*'))? 'active':''}}">
-                    <i class="fas fa-file-alt nav-icon"></i>
-                    <p>Loyihalar</p>
+            <li class="nav-item @if(request()->is('admin/document*') || request()->is('admin/pages*')) menu-open @endif">
+                <a href="#"
+                   class="nav-link @if (request()->is('admin/document*') || request()->is('admin/pages*')) active @endif">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>
+                        Loyihalar
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.index')}}"
+                           class="nav-link {{ (request()->is('admin/document*'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Barcha loyihalar <span class="badge badge-primary float-right">{{$all}}</span></p>
+                        </a>
+                    </li>
+                </ul>
             </li>
+
             <li class="nav-item">
                 <a href="{{route('admin.users.index')}}"
                    class="nav-link {{(request()->is('admin/users*'))? 'active':''}}">
