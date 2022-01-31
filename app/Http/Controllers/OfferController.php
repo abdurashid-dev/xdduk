@@ -32,8 +32,11 @@ class OfferController extends Controller
      */
     public function create()
     {
+        $all = Document::count();
+        $news = Document::where('status', 'new')->count();
+        $reject = Document::where('status', 'reject')->count();
         $users = User::where('role', 'user2')->where('is_active', 1)->get();
-        return view('offers.create', compact('users'));
+        return view('offers.create', compact('users', 'all', 'news', 'reject'));
     }
 
     /**
@@ -68,7 +71,10 @@ class OfferController extends Controller
      */
     public function show(Offer $offer)
     {
-        return view('offers.show', compact('offer'));
+        $all = Document::count();
+        $news = Document::where('status', 'new')->count();
+        $reject = Document::where('status', 'reject')->count();
+        return view('offers.show', compact('offer', 'all', 'news', 'reject'));
     }
 
     /**
@@ -79,9 +85,12 @@ class OfferController extends Controller
      */
     public function edit(Offer $offer)
     {
+        $all = Document::count();
+        $news = Document::where('status', 'new')->count();
+        $reject = Document::where('status', 'reject')->count();
         $users = User::where('role', 'user2')->where('is_active', 1)->get();
         if ($offer->status == 'tender' || $offer->status == 'shartnoma') {
-            return view('offers.edit', compact('offer', 'users'));
+            return view('offers.edit', compact('offer', 'users', 'all', 'news', 'reject'));
         } else {
             return abort(404);
         }

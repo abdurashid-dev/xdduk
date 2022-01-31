@@ -34,7 +34,7 @@ class HomeController extends Controller
         } elseif (Auth::user()->role === 'off') {
             return redirect()->route('waitList');
         } else {
-            return redirect()->back();
+            return redirect('/');
         }
     }
 }

@@ -3,12 +3,12 @@
 @section('content')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Hujjatlar</h1>
+            <h3 class="m-0 text-dark">Loyihalar</h3>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active">Hujjatlar</li>
+                <li class="breadcrumb-item active">Loyihalar</li>
             </ol>
         </div>
         <section class="content">
@@ -17,7 +17,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Hujjatlar</h3>
+                                <h3 class="card-title">Loyihalar</h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <table id="documents" class="table table-bordered table-striped">
@@ -40,10 +40,14 @@
                                             <td>{{ $document->offer->address }}</td>
                                             <td>{{ $document->offer->name_uz }}</td>
                                             <td>
-                                                {!! $document->status() !!}
+                                                <a href="{{route('admin.documents.show', $document->id)}}">
+                                                    {!! $document->status() !!}
+                                                </a>
                                             </td>
                                             <td>
-                                                {!! $document->getOfferStatus() !!}
+                                                <a href="{{route('admin.documents.show', $document->id)}}">
+                                                    {!! $document->getOfferStatus() !!}
+                                                </a>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
