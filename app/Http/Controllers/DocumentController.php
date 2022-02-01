@@ -50,15 +50,31 @@ class DocumentController extends Controller
         return redirect()->route('admin.documents.index')->with('message', 'Status o`zgartirildi !');
     }
 
-    public function news()
-    {
-        $documents = Document::with('user', 'offer')->where('status', 'yangi')->orderByDesc('created_at')->get();
-        return view('documents.news', compact('documents'));
-    }
-
     public function reject()
     {
         $documents = Document::with('user', 'offer')->where('status', 'rad etilgan')->orderByDesc('created_at')->get();
         return view('documents.reject', compact('documents'));
+    }
+    public function page($status)
+    {
+        if ($status == 'yangi') {
+            $documents = Document::with('user', 'offer')->where('status', $status)->orderByDesc('created_at')->get();
+        } else {
+            $doc = Document::with(
+                array(
+                    'user',
+                    'offer' => function ($query) use ($status) {
+                        $query->where('status', $status);
+                    }
+                ))->orderByDesc('created_at')->get();
+            $documents = [];
+            foreach ($doc as $d) {
+                if (isset($d->offer)) {
+                    $documents[] = $d;
+                }
+            }
+        }
+//        dd($documents);
+        return view('documents.page', compact('documents'));
     }
 }

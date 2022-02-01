@@ -59,29 +59,63 @@
                 </a>
                 <ul class="nav nav-treeview">
                     @php
-                        $all = App\Models\Document::count();
                         $news = App\Models\Document::where('status', 'yangi')->count();
                         $reject = App\Models\Document::where('status', 'reject')->count();
+                        $tender = \App\Models\Offer::where('status', 'tender')->count();
+                        $ecokorik = \App\Models\Offer::where('status', 'ecokorik')->count();
+                        $auksion = \App\Models\Offer::where('status', 'auksion')->count();
+                        $real = \App\Models\Offer::where('status', 'real')->count();
                     @endphp
                     <li class="nav-item">
                         <a href="{{route('admin.documents.index')}}"
-                           class="nav-link {{ (request()->is('admin/document*'))? 'active':''}}">
+                           class="nav-link {{ (request()->is('admin/documents'))? 'active':''}}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Barcha loyihalar <span class="badge badge-primary float-right">{{$all}}</span></p>
+                            <p>Barcha loyihalar </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('admin.documents.news')}}"
-                           class="nav-link {{ (request()->is('admin/new/documents'))? 'active':''}}">
+                        <a href="{{route('admin.documents.page', ['status'=>'yangi'])}}"
+                           class="nav-link {{ (request()->is('admin/documents/page/yangi'))? 'active':''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Yangi loyihalar <span class="badge badge-primary float-right">{{$news}}</span></p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.page', ['status'=>'tender'])}}"
+                           class="nav-link {{ (request()->is('admin/documents/page/tender'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Tenderdagi loyihalar <span class="badge badge-primary float-right">{{$tender}}</span></p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.page', ['status'=>'ecokorik'])}}"
+                           class="nav-link {{ (request()->is('admin/documents/page/ecokorik'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Ekologik ko`rikdagi loyihalar <span
+                                    class="badge badge-info float-right">{{$ecokorik}}</span></p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.page', ['status'=>'auksion'])}}"
+                           class="nav-link {{ (request()->is('admin/documents/page/auksion'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Auksiondag loyihalar <span class="badge badge-warning float-right">{{$auksion}}</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.documents.page', ['status'=>'real'])}}"
+                           class="nav-link {{ (request()->is('admin/documents/page/real'))? 'active':''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Realizatsiya qilingan loyihalar <span
+                                    class="badge badge-success float-right">{{$real}}</span></p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('admin.documents.reject')}}"
                            class="nav-link {{ (request()->is('admin/reject/documents'))? 'active':''}}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Rad etilgan loyihalar <span class="badge badge-primary float-right">{{$reject}}</span>
+                            <p>Rad etilgan loyihalar <span class="badge badge-danger float-right">{{$reject}}</span>
                             </p>
                         </a>
                     </li>

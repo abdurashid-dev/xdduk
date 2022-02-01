@@ -160,20 +160,20 @@
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{$progress->count()}}</h3>
+{{--                <div class="col-lg-3 col-6">--}}
+{{--                    <!-- small box -->--}}
+{{--                    <div class="small-box bg-warning">--}}
+{{--                        <div class="inner">--}}
+{{--                            <h3>{{$progress->count()}}</h3>--}}
 
-                            <p>Jarayondagi hujjatlar</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">Ko'proq <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
+{{--                            <p>Jarayondagi hujjatlar</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="icon">--}}
+{{--                            <i class="fas fa-tasks"></i>--}}
+{{--                        </div>--}}
+{{--                        <a href="#" class="small-box-footer">Ko'proq <i class="fas fa-arrow-circle-right"></i></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
@@ -320,7 +320,9 @@
                 ['Task', 'Hours per Day'],
                 ['Yangi hujjatlar', {{$news->count()}}],
                 ['Rad etilgan hujjatlar', {{$reject->count()}}],
-                ['Jarayondagi va realizatsiyadagi hujjatlar', {{$progress->count()}}],
+                ['Shartnomali hujjatlar', {{$shartnoma}}],
+                ['Ekologik ko`rikdagi hujjatlar', {{$ecokorik}}],
+                ['Auksiondagi hujjatlar', {{$auksion}}],
                 ['Realizatsiya qilingan hujjatlar', {{$done->count()}}],
             ]);
 

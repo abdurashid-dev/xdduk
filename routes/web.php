@@ -113,7 +113,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         Route::post('/user/{id}/password', [UsersController::class, 'password'])->name('users.password');
         Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
         Route::post('/documents/{id}/status', [DocumentController::class, 'status'])->name('documents.status');
-        Route::get('/new/documents', [DocumentController::class, 'news'])->name('documents.news');
+        Route::get('/documents/page/{status}', [DocumentController::class, 'page'])->name('documents.page');
         Route::get('/reject/documents', [DocumentController::class, 'reject'])->name('documents.reject');
         Route::get('document/{id}', [DocumentController::class, 'show'])->name('documents.show');
         Route::put('document/{id}/update', [DocumentController::class, 'update'])->name('documents.update');

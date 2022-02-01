@@ -33,9 +33,12 @@ class UserController extends Controller
         $documents = Document::where('user_id', Auth::user()->id)->orderByDesc('updated_at')->get();
         $news = Document::where('user_id', Auth::user()->id)->where('status', 'yangi')->get();
         $progress = Document::where('user_id', Auth::user()->id)->where('status', 'tasdiqlangan')->get();
+        $shartnoma = Offer::where('user_id', Auth::user()->id)->where('status', 'shartnoma')->count();
+        $ecokorik = Offer::where('user_id', Auth::user()->id)->where('status', 'ecokorik')->count();
+        $auksion = Offer::where('user_id', Auth::user()->id)->where('status', 'auksion')->count();
         $reject = Document::where('user_id', Auth::user()->id)->where('status', 'rad etilgan')->get();
         $done = Offer::where('user_id', Auth::user()->id)->where('status', 'real')->get();
-        return view('admin.user.index', compact('user', 'documents', 'news', 'progress', 'reject', 'done'));
+        return view('admin.user.index', compact('user', 'documents', 'news', 'reject', 'done', 'shartnoma', 'ecokorik', 'auksion'));
     }
 
     public function table()
