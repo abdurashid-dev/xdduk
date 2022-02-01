@@ -36,7 +36,7 @@
                                     <td>{{ $document->user->name }}</td>
                                 </tr>
                                 <tr>
-                                    <th>MCHJ tashkilot tarafidan qo'yilgan nom</th>
+                                    <th>Fayl nomi</th>
                                     <td>{{ $document->name }}</td>
                                 </tr>
                                 <tr>
@@ -44,13 +44,13 @@
                                     <td>{{ $document->offer->address }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Biriktirilgan hujjat</th>
+                                    <th>Biriktirilgan loyiha</th>
                                     <td>{{ $document->offer->name_uz }}</td>
                                 </tr>
                                 <tr>
                                     <th>Fayl</th>
                                     <td><a target="_blank" href="{{asset($document->file)}}" class="fs-4"><i
-                                                class="fas fa-file-pdf"></i> Download</a></td>
+                                                class="fas fa-file-pdf"></i> Yuklash</a></td>
                                 </tr>
                             </table>
                         </div>

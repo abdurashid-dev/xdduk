@@ -27,7 +27,7 @@
                         <th>{{__('words.file')}}</th>
                         <td>
                             <a target="_blank" href="{{asset($doc->file)}}" target="_blank" style="font-size: 20px"><i
-                                    class="far fa-file-pdf"></i> Download</a>
+                                    class="far fa-file-pdf"></i> Yuklash</a>
                         </td>
                     </tr>
                     <tr>

@@ -84,7 +84,7 @@ class UserController extends Controller
     {
         $user = User::where('role', 'user2')->findOrFail(Auth::user()->id);
         $doc = Document::where('user_id', Auth::user()->id)->orderByDesc('created_at')->findOrFail($id);
-        $comments = Comment::where('doc_id', $doc->id)->get();
+        $comments = Comment::where('doc_id', $doc->id)->orderByDesc('created_at')->get();
         return view('admin.user.show', compact('user', 'doc', 'comments'));
     }
 

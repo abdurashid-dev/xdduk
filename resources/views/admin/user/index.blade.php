@@ -160,21 +160,21 @@
                     </div>
                 </div>
                 <!-- ./col -->
-{{--                <div class="col-lg-3 col-6">--}}
-{{--                    <!-- small box -->--}}
-{{--                    <div class="small-box bg-warning">--}}
-{{--                        <div class="inner">--}}
-{{--                            <h3>{{$progress->count()}}</h3>--}}
+            {{--                <div class="col-lg-3 col-6">--}}
+            {{--                    <!-- small box -->--}}
+            {{--                    <div class="small-box bg-warning">--}}
+            {{--                        <div class="inner">--}}
+            {{--                            <h3>{{$progress->count()}}</h3>--}}
 
-{{--                            <p>Jarayondagi hujjatlar</p>--}}
-{{--                        </div>--}}
-{{--                        <div class="icon">--}}
-{{--                            <i class="fas fa-tasks"></i>--}}
-{{--                        </div>--}}
-{{--                        <a href="#" class="small-box-footer">Ko'proq <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-                <!-- ./col -->
+            {{--                            <p>Jarayondagi hujjatlar</p>--}}
+            {{--                        </div>--}}
+            {{--                        <div class="icon">--}}
+            {{--                            <i class="fas fa-tasks"></i>--}}
+            {{--                        </div>--}}
+            {{--                        <a href="#" class="small-box-footer">Ko'proq <i class="fas fa-arrow-circle-right"></i></a>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
@@ -222,8 +222,8 @@
                 <div class="card-body table-responsive">
                     <table class="table table-bordered">
                         <tr>
-                            <th>File nomi</th>
-                            <th>Fayl yuklash</th>
+                            <th>Nomi</th>
+                            <th>Fayl</th>
                         </tr>
                         @foreach($news as $new)
                             <tr>
@@ -231,7 +231,7 @@
                                     <a href="{{route('admin.user.show',$new->id)}}">{{$new->name}} {{$new->user_id}}</a>
                                 </td>
                                 <td>
-                                    <a href="{{$new->file}}"><i class="fas fa-file-pdf"></i> Download</a>
+                                    <a href="{{asset($new->file)}}"><i class="fas fa-file-pdf"></i> Yuklash</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -252,8 +252,8 @@
                 <div class="card-body table-responsive">
                     <table class="table table-bordered">
                         <tr>
-                            <th>File nomi</th>
-                            <th>Fayl yuklash</th>
+                            <th>Nomi</th>
+                            <th>Fayl</th>
                         </tr>
                         @foreach($reject as $rej)
                             <tr>
@@ -261,7 +261,7 @@
                                     <a href="{{route('admin.user.show',$rej->id)}}">{{$rej->name}} {{$rej->user_id}}</a>
                                 </td>
                                 <td>
-                                    <a href="{{$rej->file}}"><i class="fas fa-file-pdf"></i> Download</a>
+                                    <a href="{{asset($rej->file)}}"><i class="fas fa-file-pdf"></i> Yuklash</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -36,12 +36,14 @@
                                 <td>Biriktirilgan ish topilmadi!</td>
                             @endif
                             <th>
-                                {!! $document->getOfferStatus() !!}
-                                @if($document->status == 'rad etilgan')
-                                    <div class="badge badge-danger">
-                                        rad etilgan
-                                    </div>
-                                @endif
+                                <a href="{{ route('admin.user.show', $document->id) }}">
+                                    {!! $document->getOfferStatus() !!}
+                                    @if($document->status == 'rad etilgan')
+                                        <div class="badge badge-danger">
+                                            rad etilgan
+                                        </div>
+                                    @endif
+                                </a>
                             </th>
                             <td>
                                 <div class="btn-group">
