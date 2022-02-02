@@ -26,7 +26,7 @@ class File implements Rule
     public function passes($attribute, $value)
     {
 //        var_dump(substr($value, -3)); exit;
-        return  in_array(substr($value, -3), ['pdf', 'zip']);
+        return  in_array(substr($value, -3), ['pdf', 'zip', 'rar']);
     }
 
     /**

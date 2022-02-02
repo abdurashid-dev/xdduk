@@ -125,7 +125,7 @@ class UserController extends Controller
         //check request file
         if (request()->hasFile('file')) {
             $validator = Validator::make($request->all(), [
-                'file' => 'required|max:512000|mimes:pdf,zip',
+                'file' => 'required|max:512000|mimes:pdf,zip, rar',
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()->all()]);

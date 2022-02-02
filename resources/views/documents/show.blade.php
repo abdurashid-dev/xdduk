@@ -63,7 +63,7 @@
                             <div class="container table-responsive">
                                 <table class="table table-bordered">
                                     <tr>
-                                        <th>{{__('words.file')}}</th>
+                                        <th>MCHJ tashkilot</th>
                                         <th>{{__('words.comment')}}</th>
                                         <th>{{__('words.status')}}</th>
                                         <th>{{__('words.date')}}</th>
@@ -102,7 +102,7 @@
                             <h3 class="card-title">MCHJ tashkilotga xabar yozish</h3>
                         </div>
                         <div class="card-body">
-                            @foreach($user->offer as $offer)
+                            @forelse($user->offer as $offer)
                                 @if($offer->id == $document->offer_id)
                                     @if($offer->status == 'real')
                                         <div class="alert alert-success">
@@ -132,7 +132,11 @@
                                         </form>
                                     @endif
                                 @endif
-                            @endforeach
+                            @empty
+                                <div class="alert alert-danger">
+                                    <p>* Ushbu loyiha bo`yicha ish yopilgan</p>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

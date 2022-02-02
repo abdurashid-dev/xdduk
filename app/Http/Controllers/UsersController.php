@@ -128,6 +128,12 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $offers = Offer::where('user_id', $user->id)->get();
+        $documents = Document::where('user_id', $user->id)->get();
+        foreach ($documents as $document){
+            $document->update([
+                'status' => 'off'
+            ]);
+        }
         foreach ($offers as $offer) {
             $offer->update([
                 'user_id' => null,

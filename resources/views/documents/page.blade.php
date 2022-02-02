@@ -42,9 +42,15 @@
                                             <td>
                                                 {!! $document->status() !!}
                                             </td>
-                                            <td>
-                                                {!! $document->getOfferStatus() !!}
-                                            </td>
+                                            @if($document->status == 'off')
+                                                <td class="text-danger">* Ish yopilgan</td>
+                                            @else
+                                                <td>
+                                                    <a href="{{route('admin.documents.show', $document->id)}}">
+                                                        {!! $document->getOfferStatus() !!}
+                                                    </a>
+                                                </td>
+                                            @endif
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="{{route('admin.documents.show', $document->id)}}"

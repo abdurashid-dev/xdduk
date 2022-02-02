@@ -73,8 +73,13 @@ class DocumentController extends Controller
                     $documents[] = $d;
                 }
             }
+//            //check if user is null
+//            foreach ($documents as $key => $document) {
+//                if (is_null($document->user)) {
+//                    unset($documents[$key]);
+//                }
+//            }
         }
-//        dd($documents);
         return view('documents.page', compact('documents'));
     }
 }

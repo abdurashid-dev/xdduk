@@ -39,16 +39,30 @@
                                             <td>{{ $document->user->name }}</td>
                                             <td>{{ $document->offer->address }}</td>
                                             <td>{{ $document->offer->name_uz }}</td>
-                                            <td>
-                                                <a href="{{route('admin.documents.show', $document->id)}}">
-                                                    {!! $document->status() !!}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="{{route('admin.documents.show', $document->id)}}">
-                                                    {!! $document->getOfferStatus() !!}
-                                                </a>
-                                            </td>
+                                            @if($document->user->role !== 'deleted')
+                                                <td>
+                                                    <a href="{{route('admin.documents.show', $document->id)}}">
+                                                        {!! $document->status() !!}
+                                                    </a>
+                                                </td>
+                                                @if($document->status == 'off')
+                                                    <td class="text-danger">* Ish yopilgan</td>
+                                                @else
+                                                <td>
+                                                    <a href="{{route('admin.documents.show', $document->id)}}">
+                                                        {!! $document->getOfferStatus() !!}
+                                                    </a>
+                                                </td>
+                                                @endif
+                                            @else
+                                                <td>
+                                                    <a class="btn btn-sm btn-danger"
+                                                       href="{{route('admin.documents.show', $document->id)}}">
+                                                        MCHJ tashkilot ochirilgan
+                                                    </a>
+                                                </td>
+                                                <td></td>
+                                            @endif
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="{{route('admin.documents.show', $document->id)}}"
