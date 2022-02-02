@@ -26,7 +26,7 @@
                    class="nav-link {{(request()->is('admin/user/documents*'))? 'active':''}}">
                     <i class="nav-icon far fa-folder"></i>
                     <p>
-                        Hujjatlar
+                        Loyihalar
                     </p>
                 </a>
             </li>
@@ -35,7 +35,7 @@
                    class="nav-link {{(request()->is('admin/user/send*'))? 'active':''}}">
                     <i class="nav-icon fab fa-telegram-plane"></i>
                     <p>
-                        Hujjat yuborish
+                        Loyihani yuborish
                     </p>
                 </a>
             </li>
@@ -61,7 +61,7 @@
                     @php
                         $news = App\Models\Document::where('status', 'yangi')->count();
                         $reject = App\Models\Document::where('status', 'reject')->count();
-                        $tender = \App\Models\Offer::where('status', 'tender')->count();
+                        $shartnoma = \App\Models\Offer::where('status', 'shartnoma')->count();
                         $ecokorik = \App\Models\Offer::where('status', 'ecokorik')->count();
                         $auksion = \App\Models\Offer::where('status', 'auksion')->count();
                         $real = \App\Models\Offer::where('status', 'real')->count();
@@ -81,10 +81,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('admin.documents.page', ['status'=>'tender'])}}"
-                           class="nav-link {{ (request()->is('admin/documents/page/tender'))? 'active':''}}">
+                        <a href="{{route('admin.documents.page', ['status'=>'shartnoma'])}}"
+                           class="nav-link {{ (request()->is('admin/documents/page/shartnoma'))? 'active':''}}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Tenderdagi loyihalar <span class="badge badge-primary float-right">{{$tender}}</span></p>
+                            <p>Shartnomali loyihalar <span class="badge badge-primary float-right">{{$shartnoma}}</span></p>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -7,13 +7,13 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6">
-            <h3 class="m-0 text-dark">Hujjat tahrirlash</h3>
+            <h3 class="m-0 text-dark">Loyihani tahrirlash</h3>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.user') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.user.table') }}">Hujjatlar</a></li>
-                <li class="breadcrumb-item active">Hujjatni tahrirlash</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.user.table') }}">Loyihalar</a></li>
+                <li class="breadcrumb-item active">Loyihani tahrirlash</li>
 
             </ol>
         </div>
@@ -56,7 +56,7 @@
     <script>
         const inputElement = document.querySelector('input[id="file"]');
         const pond = FilePond.create(inputElement, {
-            labelIdle: 'Hujjatni yuklang <span class="filepond--label-action">Tanlash.</span>',
+            labelIdle: 'Loyihani yuklang <span class="filepond--label-action">Tanlash.</span>',
         });
         FilePond.setOptions({
             server: {

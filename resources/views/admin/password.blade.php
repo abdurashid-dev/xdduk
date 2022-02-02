@@ -104,7 +104,7 @@
                                     <form id="w0" action="{{($user->role == 'user1')?route('admin.password.change'):route('admin.password.change.index')}}" method="post">
                                         @csrf
                                         <div class="form-group field-usersettingsform-password_old required">
-                                            <label for="usersettingsform-password_old">Password Old</label>
+                                            <label for="usersettingsform-password_old">Eski parol</label>
                                             <input type="password" id="usersettingsform-password_old"
                                                    class="form-control" name="password_old"
                                                    value="" aria-required="true">
@@ -112,7 +112,7 @@
                                             <div class="invalid-feedback"></div>
                                         </div>
                                         <div class="form-group field-usersettingsform-password required">
-                                            <label for="usersettingsform-password">Password</label>
+                                            <label for="usersettingsform-password">Yangi parol</label>
                                             <input type="password" id="usersettingsform-password"
                                                    class="form-control" name="password" value=""
                                                    aria-required="true">
@@ -120,7 +120,7 @@
                                             <div class="invalid-feedback"></div>
                                         </div>
                                         <div class="form-group field-usersettingsform-password_repeat required">
-                                            <label for="usersettingsform-password_repeat">Password Repeat</label>
+                                            <label for="usersettingsform-password_repeat">Parolni takrorlang</label>
                                             <input type="password" id="usersettingsform-password_repeat"
                                                    class="form-control" name="password_confirmation"
                                                    value="" aria-required="true">

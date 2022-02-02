@@ -16,13 +16,13 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6">
-            <h3 class="m-0 text-dark">Hujjat yuborish</h3>
+            <h3 class="m-0 text-dark">Loyiha yuborish</h3>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.user') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.user.table') }}">Hujjatlar</a></li>
-                <li class="breadcrumb-item active">Hujjat yuborish</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.user.table') }}">Loyihalar</a></li>
+                <li class="breadcrumb-item active">Loyiha yuborish</li>
 
             </ol>
         </div>
@@ -79,12 +79,12 @@
     <script>
         let offer = $('#offer');
         offer.select2({
-            placeholder: "Hujjatni tanlang",
+            placeholder: "Loyihani tanlang",
             allowClear: true
         });
         const inputElement = document.querySelector('input[id="file"]');
         const pond = FilePond.create(inputElement, {
-            'labelIdle': 'Hujjatni yuklang. <span class="filepond--label-action">Hujjatni tanlang</span>',
+            'labelIdle': 'Loyihani yuklang. <span class="filepond--label-action">Tanlang</span>',
         });
         FilePond.setOptions({
             server: {

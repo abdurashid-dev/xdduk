@@ -42,21 +42,6 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $users->count() }}</h3>
-                            <p>MCHJ tashkilotlar</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="{{route('admin.users.index')}}" class="small-box-footer">Ko'proq <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ \App\Models\Document::where('status', 'rad etilgan')->count() }}</h3>
@@ -66,6 +51,21 @@
                             <i class="fas fa-exclamation-circle"></i>
                         </div>
                         <a href="{{route('admin.documents.index')}}" class="small-box-footer">Ko'proq <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $users->count() }}</h3>
+                            <p>MCHJ tashkilotlar</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{{route('admin.users.index')}}" class="small-box-footer">Ko'proq <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                     <ul class="products-list product-list-in-card pl-2 pr-2">
-                        @foreach($newdocs as $new)
+                        @forelse($newdocs as $new)
                             <li class="item">
                                 <div class="product-img">
                                     <img src="{{asset('defaultAvatar.png')}}" alt="Product Image" class="img-size-50">
@@ -123,7 +123,9 @@
                                     </span>
                                 </div>
                             </li>
-                        @endforeach
+                        @empty
+                            <p class="text-center">Hujjatlar yo'q</p>
+                        @endforelse
                     </ul>
                 </div>
                 <!-- /.card-body -->

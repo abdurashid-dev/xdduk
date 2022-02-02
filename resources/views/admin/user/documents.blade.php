@@ -3,17 +3,17 @@
 @section('content')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h3 class="m-0 text-dark">Hujjatlar</h3>
+            <h3 class="m-0 text-dark">Loyihalar</h3>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.user') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active">Hujjatlar</li>
+                <li class="breadcrumb-item active">Loyihalar</li>
             </ol>
         </div>
     </div>
     <div class="card">
-        <div class="card-header">Hujjatlar</div>
+        <div class="card-header">Loyihalar</div>
         <div class="card-body">
             <div class=" table-responsive">
                 <table class="table table-bordered">

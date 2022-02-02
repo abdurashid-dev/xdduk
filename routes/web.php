@@ -96,7 +96,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     //super admin
     Route::middleware('super')->group(function () {
         Route::get('/dashboard', function () {
-            $users = User::where('role', '!=', 'user1')->get();
+            $users = User::where('role', 'user2')->get();
             $tender = Offer::where('status', '=', 'tender')->count();
             $shartnoma = Offer::where('status', '=', 'shartnoma')->count();
             $ecokorik = Offer::where('status', '=', 'ecokorik')->count();

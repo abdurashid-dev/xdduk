@@ -151,7 +151,7 @@
                         <div class="inner">
                             <h3>{{$news->count()}}</h3>
 
-                            <p>Yangi hujjatlar</p>
+                            <p>Yangi loyihalarlar</p>
                         </div>
                         <div class="icon">
                             <i class="far fa-folder-open"></i>
@@ -212,7 +212,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Yangi hujjatlar</h3>
+                    <h3 class="card-title">Yangi loyihalar</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -225,16 +225,22 @@
                             <th>Nomi</th>
                             <th>Fayl</th>
                         </tr>
-                        @foreach($news as $new)
+                        @forelse($news as $new)
                             <tr>
                                 <td>
-                                    <a href="{{route('admin.user.show',$new->id)}}">{{$new->name}} {{$new->user_id}}</a>
+                                    <a href="{{route('admin.user.show',$new->id)}}">{{$new->name}}</a>
                                 </td>
                                 <td>
                                     <a href="{{asset($new->file)}}"><i class="fas fa-file-pdf"></i> Yuklash</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="2">
+                                    <p class="text-center">Yangi loyihalar yo'q</p>
+                                </td>
+                            </tr>
+                        @endforelse
                     </table>
                 </div>
             </div>
@@ -242,7 +248,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Rad etilganlar</h3>
+                    <h3 class="card-title">Rad etilganlar loyihalar</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -255,16 +261,22 @@
                             <th>Nomi</th>
                             <th>Fayl</th>
                         </tr>
-                        @foreach($reject as $rej)
+                        @forelse($reject as $rej)
                             <tr>
                                 <td>
-                                    <a href="{{route('admin.user.show',$rej->id)}}">{{$rej->name}} {{$rej->user_id}}</a>
+                                    <a href="{{route('admin.user.show',$rej->id)}}">{{$rej->name}}</a>
                                 </td>
                                 <td>
                                     <a href="{{asset($rej->file)}}"><i class="fas fa-file-pdf"></i> Yuklash</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="2">
+                                    <p class="text-center">Rad etilganlar loyihalar yo'q</p>
+                                </td>
+                            </tr>
+                        @endforelse
                     </table>
                 </div>
             </div>
@@ -272,7 +284,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Hujjatlar grafikasi</h3>
+                    <h3 class="card-title">Loyihalar grafikasi</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -289,27 +301,7 @@
     </div>
 @stop
 @section('script')
-    <!-- Load FilePond library -->
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-    <script src="{{ asset('dashboard/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script>
-        let offer = $('#offer');
-        offer.select2({
-            placeholder: "Hujjatni tanlang",
-            allowClear: true
-        });
-        const inputElement = document.querySelector('input[id="file"]');
-        const pond = FilePond.create(inputElement);
-        FilePond.setOptions({
-            server: {
-                url: '/upload-file',
-                headers: {
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                },
-            }
-        });
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="{{asset('dashboard/dist/js/chart.js')}}"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -318,16 +310,16 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Yangi hujjatlar', {{$news->count()}}],
-                ['Rad etilgan hujjatlar', {{$reject->count()}}],
-                ['Shartnomali hujjatlar', {{$shartnoma}}],
-                ['Ekologik ko`rikdagi hujjatlar', {{$ecokorik}}],
-                ['Auksiondagi hujjatlar', {{$auksion}}],
-                ['Realizatsiya qilingan hujjatlar', {{$done->count()}}],
+                ['Yangi loyihalar', {{$news->count()}}],
+                ['Rad etilgan loyihalar', {{$reject->count()}}],
+                ['Shartnomali loyihalar', {{$shartnoma}}],
+                ['Ekologik ko`rikdagi loyihalar', {{$ecokorik}}],
+                ['Auksiondagi loyihalar', {{$auksion}}],
+                ['Realizatsiya qilingan loyihalar', {{$done->count()}}],
             ]);
 
             var options = {
-                title: 'Hujjatlar'
+                title: 'Loyihalar'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
