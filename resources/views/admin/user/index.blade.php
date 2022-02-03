@@ -281,50 +281,50 @@
                 </div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Loyihalar grafikasi</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body table-responsive">
-                    <table class="table">
-                        <div id="piechart" style="width: 900px; height: 500px;"></div>
-                    </table>
-                </div>
-            </div>
-        </div>
+{{--        <div class="col-12">--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header">--}}
+{{--                    <h3 class="card-title">Loyihalar grafikasi</h3>--}}
+{{--                    <div class="card-tools">--}}
+{{--                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
+{{--                            <i class="fas fa-minus"></i>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="card-body table-responsive">--}}
+{{--                    <table class="table">--}}
+{{--                        <div id="piechart" style="width: 900px; height: 500px;"></div>--}}
+{{--                    </table>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 @stop
-@section('script')
-    <script type="text/javascript" src="{{asset('dashboard/dist/js/chart.js')}}"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+{{--@section('script')--}}
+{{--    <script type="text/javascript" src="{{asset('dashboard/dist/js/chart.js')}}"></script>--}}
+{{--    <script type="text/javascript">--}}
+{{--        google.charts.load('current', {'packages': ['corechart']});--}}
+{{--        google.charts.setOnLoadCallback(drawChart);--}}
 
-        function drawChart() {
+{{--        function drawChart() {--}}
 
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Yangi loyihalar', {{$news->count()}}],
-                ['Rad etilgan loyihalar', {{$reject->count()}}],
-                ['Shartnomali loyihalar', {{$shartnoma}}],
-                ['Ekologik ko`rikdagi loyihalar', {{$ecokorik}}],
-                ['Auksiondagi loyihalar', {{$auksion}}],
-                ['Realizatsiya qilingan loyihalar', {{$done->count()}}],
-            ]);
+{{--            var data = google.visualization.arrayToDataTable([--}}
+{{--                ['Task', 'Hours per Day'],--}}
+{{--                ['Yangi loyihalar', {{$news->count()}}],--}}
+{{--                ['Rad etilgan loyihalar', {{$reject->count()}}],--}}
+{{--                ['Shartnomali loyihalar', {{$shartnoma}}],--}}
+{{--                ['Ekologik ko`rikdagi loyihalar', {{$ecokorik}}],--}}
+{{--                ['Auksiondagi loyihalar', {{$auksion}}],--}}
+{{--                ['Realizatsiya qilingan loyihalar', {{$done->count()}}],--}}
+{{--            ]);--}}
 
-            var options = {
-                title: 'Loyihalar'
-            };
+{{--            var options = {--}}
+{{--                title: 'Loyihalar'--}}
+{{--            };--}}
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+{{--            var chart = new google.visualization.PieChart(document.getElementById('piechart'));--}}
 
-            chart.draw(data, options);
-        }
-    </script>
-@stop
+{{--            chart.draw(data, options);--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@stop--}}

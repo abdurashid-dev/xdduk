@@ -20,7 +20,7 @@ class DocumentController extends Controller
     {
         $document = Document::with('user', 'offer')->findOrFail($id);
         $user = User::with('offer')->where('id', $document->user_id)->first();
-        $comments = Comment::where('doc_id', $document->id)->get();
+        $comments = Comment::where('doc_id', $document->id)->orderByDesc('created_at')->get();
         $document->checkStatus();
         return view('documents.show', compact('document', 'user', 'comments'));
     }
@@ -29,11 +29,18 @@ class DocumentController extends Controller
     {
         $offer = Offer::findOrFail($request->offer_id);
         $document = Document::findOrFail($id);
+        $comment = new Comment();
         $request->validate([
             'status' => 'required',
             'comment' => 'required',
+            'file' => 'max:10024|mimes:zip, pdf, rar'
         ]);
-        $comment = new Comment();
+        $file = $request->file('file');
+        if ($file) {
+            $fileName = $file->getClientOriginalName();
+            $file->move('ecokorik', $fileName);
+            $comment->file = $fileName;
+        }
         $comment->user_id = $document->user_id;
         $comment->doc_id = $document->id;
         $comment->comment = $request->comment;
@@ -55,6 +62,7 @@ class DocumentController extends Controller
         $documents = Document::with('user', 'offer')->where('status', 'rad etilgan')->orderByDesc('created_at')->get();
         return view('documents.reject', compact('documents'));
     }
+
     public function page($status)
     {
         if ($status == 'yangi') {
@@ -62,11 +70,13 @@ class DocumentController extends Controller
         } else {
             $doc = Document::with(
                 array(
-                    'user',
+                    'user' => function ($query) {
+                        $query->where('role', 'user2');
+                    },
                     'offer' => function ($query) use ($status) {
                         $query->where('status', $status);
                     }
-                ))->orderByDesc('created_at')->get();
+                ))->where('status', '!=', 'ban')->where('status', '!=', 'off')->orderByDesc('created_at')->get();
             $documents = [];
             foreach ($doc as $d) {
                 if (isset($d->offer)) {
@@ -74,12 +84,22 @@ class DocumentController extends Controller
                 }
             }
 //            //check if user is null
-//            foreach ($documents as $key => $document) {
-//                if (is_null($document->user)) {
-//                    unset($documents[$key]);
-//                }
-//            }
+            foreach ($documents as $key => $document) {
+                if (is_null($document->user)) {
+                    unset($documents[$key]);
+                }
+            }
         }
+//        dd($documents);
         return view('documents.page', compact('documents'));
+    }
+
+    public function ban($id)
+    {
+        $document = Document::findOrFail($id);
+        $offer = Offer::findOrFail($document->offer_id);
+        $offer->update(['status' => 'tender']);
+        $document->update(['status' => 'ban']);
+        return redirect()->route('admin.documents.index')->with('message', 'Ish yopildi !');
     }
 }

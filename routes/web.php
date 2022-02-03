@@ -121,6 +121,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         Route::post('/offers/{id}/status', [OfferController::class, 'status'])->name('offers.status');
         Route::resource('/users', UsersController::class);
         Route::get('trash/users', [UsersController::class, 'trash'])->name('users.trash');
+        Route::post('ban/{id}', [DocumentController::class, 'ban'])->name('ban');
         Route::get('trash/user/{id}', [UsersController::class, 'trashshow'])->name('users.trashshow');
         Route::post('trash/restore/{id}', [UsersController::class, 'restore'])->name('users.restore');
         Route::post('/user-status/{id}', [UsersController::class, 'status'])->name('userStatus');

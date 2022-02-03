@@ -45,14 +45,14 @@
                                                         {!! $document->status() !!}
                                                     </a>
                                                 </td>
-                                                @if($document->status == 'off')
+                                                @if($document->status == 'off' || $document->status == 'ban')
                                                     <td class="text-danger">* Ish yopilgan</td>
                                                 @else
-                                                <td>
-                                                    <a href="{{route('admin.documents.show', $document->id)}}">
-                                                        {!! $document->getOfferStatus() !!}
-                                                    </a>
-                                                </td>
+                                                    <td>
+                                                        <a href="{{route('admin.documents.show', $document->id)}}">
+                                                            {!! $document->getOfferStatus() !!}
+                                                        </a>
+                                                    </td>
                                                 @endif
                                             @else
                                                 <td>
@@ -64,12 +64,21 @@
                                                 <td></td>
                                             @endif
                                             <td>
-                                                <div class="btn-group">
-                                                    <a href="{{route('admin.documents.show', $document->id)}}"
-                                                       class="btn btn-primary">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </div>
+                                                <a href="{{route('admin.documents.show', $document->id)}}"
+                                                   class="btn btn-primary" title="* Ko`rish">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                @if($document->offer->status == 'real' && $document->status !== 'off')
+                                                    <form action="{{route('admin.ban', $document->id)}}" method="POST"
+                                                          class="d-inline-block">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('Ishonchingiz komilmi?')"
+                                                                title="* Ishni yopish">
+                                                            <i class="fas fa-ban"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

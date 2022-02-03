@@ -24,6 +24,7 @@
                         <th scope="col">{{__('words.condition')}}</th>
                         <th scope="col">{{__('words.action')}}</th>
                     </tr>
+{{--                    <pre>{{ print_r($documents[0]->status) }}</pre>--}}
                     @forelse($documents as $document)
                         <tr>
                             <td>{{$document->name}}</td>
@@ -35,16 +36,21 @@
                             @else
                                 <td>Biriktirilgan ish topilmadi!</td>
                             @endif
-                            <th>
+                            <td>
                                 <a href="{{ route('admin.user.show', $document->id) }}">
-                                    {!! $document->getOfferStatus() !!}
                                     @if($document->status == 'rad etilgan')
                                         <div class="badge badge-danger">
                                             rad etilgan
                                         </div>
+                                    @elseif($document->status =='ban')
+                                        <div class="btn btn-sm btn-danger">
+                                            Ish yopilgan
+                                        </div>
+                                    @else
+                                        {!! $document->getOfferStatus() !!}
                                     @endif
                                 </a>
-                            </th>
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <a href="{{ route('admin.user.show', $document->id) }}"

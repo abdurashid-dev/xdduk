@@ -57,7 +57,8 @@
                                 {{$comment->user->name}}
                             </td>
                             <td>
-                                {{$comment->comment}}
+                                {{$comment->comment}} <br><br>
+                                {!! ($comment->file) ? '<a target="_blank" href="'.asset($comment->file).'" target="_blank" style="font-size: 18px"><i class="far fa-file-pdf"></i> Yuklash</a>' : ''!!}
                             </td>
                             <td>
                                 {{$comment->doc_status()}}

@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('doc_id')->references('id')->on('documents')->onDelete('cascade');
             $table->text('comment');
+            $table->string('file')->nullable();
             $table->string('doc_status');
             $table->timestamps();
         });

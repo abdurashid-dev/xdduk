@@ -44,6 +44,8 @@ class Document extends BaseModel
             return '<button class="btn btn-sm btn-success mt-2" title="* Status">Tasdiqlangan</button>';
         } elseif ($this->status == 'korildi') {
             return '<button class="btn btn-sm btn-success mt-2" title="* Status">Ko`rildi</button>';
+        } elseif ($this->status == 'ban') {
+            return '<button class="btn btn-sm btn-danger mt-2" title="* Status">Ish yopilgan</button>';
         }
         return '<button class="btn btn-sm btn-warning mt-2" title="* Status">Xatolik</button>';
     }

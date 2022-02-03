@@ -42,7 +42,7 @@
                                             <td>
                                                 {!! $document->status() !!}
                                             </td>
-                                            @if($document->status == 'off')
+                                            @if($document->status == 'off' || $document->status == 'ban')
                                                 <td class="text-danger">* Ish yopilgan</td>
                                             @else
                                                 <td>

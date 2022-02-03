@@ -74,7 +74,8 @@
                                                 {{$comment->user->name}}
                                             </td>
                                             <td>
-                                                {{$comment->comment}}
+                                                {{$comment->comment}}<br>
+                                                {!! ($comment->file) ? '<a target="_blank" href="'.asset($comment->file).'" target="_blank" style="font-size: 18px"><i class="far fa-file-pdf"></i> Yuklash</a>' : ''!!}
                                             </td>
                                             <td>
                                                 {{$comment->doc_status()}}
@@ -108,9 +109,13 @@
                                         <div class="alert alert-success">
                                             <p>Realizatsiya qilingan</p>
                                         </div>
+                                    @elseif($document->status == 'ban')
+                                        <div class="alert alert-danger">
+                                            <p>* Ish ikki taraf tomonidan yopilgan</p>
+                                        </div>
                                     @else
                                         <form action="{{ route('admin.documents.update', $document->id) }}"
-                                              method="post">
+                                              method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-group">
@@ -120,6 +125,12 @@
                                                     <option value="rad etish">Rad etish</option>
                                                 </select>
                                             </div>
+                                            @if($document->offer->status == 'ecokorik')
+                                                <div class="form-group">
+                                                    <label for="exampleInputFile">Fayl</label>
+                                                    <input type="file" name="file" class="form-control">
+                                                </div>
+                                            @endif
                                             <div class="form-group">
                                                 <label for="message">Xabar</label>
                                                 <textarea name="comment" id="comment" cols="30" rows="10"
