@@ -75,7 +75,7 @@
                                             </td>
                                             <td>
                                                 {{$comment->comment}}<br>
-                                                {!! ($comment->file) ? '<a target="_blank" href="'.asset($comment->file).'" target="_blank" style="font-size: 18px"><i class="far fa-file-pdf"></i> Yuklash</a>' : ''!!}
+                                                {!! ($comment->file) ? '<a target="_blank" href="'.asset('ecokorik/'.$comment->file).'" target="_blank" style="font-size: 18px"><i class="far fa-file-pdf"></i> Yuklash</a>' : ''!!}
                                             </td>
                                             <td>
                                                 {{$comment->doc_status()}}
