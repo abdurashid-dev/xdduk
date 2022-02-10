@@ -64,4 +64,6 @@ return [
 The State Emblem of the Republic of Uzbekistan has the following appearance: mountains, rivers and the golden sun on the flowering valley, the left side of which is wrapped in a wreath of wheat ears, and the right side of which is open cotton stalks. scattering rays. At the top of the coat of arms there is an octagon as a symbol of the Republic\'s freedom, and on the inside there is a crescent moon and a star. In the center of the coat of arms is a symbol of happiness and freedom - the bird Humo with its wings. At the bottom of the coat of arms, the word "Uzbekistan" is inscribed on a ribbon representing the national flag of the Republic of Uzbekistan.
 
 In the color version of the State Emblem of the Republic of Uzbekistan: Humo bird and rivers - in silver; sun, ears of corn, cotton bowls and the inscription "Uzbekistan" - in gold; cotton branches and leaves, mountains and valleys - green; cotton in bowls - white; ribbon - in three different colors reflecting colors of the National flag of the Republic of Uzbekistan; octagon - the color of the air, framed by gold gilding; crescent and stars - depicted in white.',
+    'captcha' => 'Enter captcha',
+    'successfully_sent' => 'Your message has been successfully sent!',
 ];

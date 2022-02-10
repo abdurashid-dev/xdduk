@@ -46,6 +46,8 @@ Route::get('/leader/{id}', [FrontendController::class, 'leader'])->name('leader'
 Route::get('/page/{slug}', [FrontendController::class, 'page'])->name('page');
 Route::get('/offers', [FrontendController::class, 'offers'])->name('offers');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+//make reload captcha in ajax
+Route::post('/contact/send', [FrontendController::class, 'text'])->name('text');
 
 
 Route::middleware('waitList')->group(function () {
@@ -80,6 +82,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
         Route::get('/menus/order', [MenuController::class, 'order'])->name('menus.order');
         Route::post('/menus/order', [MenuController::class, 'saveOrder'])->name('menus.saveOrder');
         Route::get('/get-menus/{id}', [PageController::class, 'getMenu'])->name('get-menus');
+        Route::get('/contact', [AdminController::class, 'contact'])->name('contact');
+        Route::get('/contact/{id}', [AdminController::class, 'contactShow'])->name('contact.show');
+        Route::delete('/contact/{id}/delete', [AdminController::class, 'contactDelete'])->name('contact.delete');
         Route::resources([
             'categories' => CategoryController::class,
             'blogs' => BlogController::class,

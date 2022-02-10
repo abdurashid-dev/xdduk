@@ -249,6 +249,14 @@
                 </ul>
             </li>
             <li class="nav-item mb-3">
+                <a href="{{route('admin.contact')}}" class="nav-link {{ (request()->is('admin/contact*'))? 'active':''}}">
+                    <i class="nav-icon fas fa-envelope"></i>
+                    <p>
+                        Xabarlar
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item mb-3">
                 <a href="{{route('admin.optimize')}}" class="nav-link">
                     <i class="nav-icon fas fa-broom"></i>
                     <p>
@@ -257,7 +265,7 @@
                 </a>
             </li>
         @endif
-        <li class="nav-item">
+        <li class="nav-item mb-lg-3">
             <a href="/"
                class="nav-link">
                 <i class="nav-icon fas fa-arrow-left"></i>

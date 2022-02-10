@@ -44,28 +44,57 @@
                         </div>
                     </div>
                 </div>
+                @if(session()->has('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <p>{{__('words.successfully_sent')}}</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="contact-form">
-                    <form>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form action="{{route('text')}}" method="POST">
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="fname" placeholder="{{__('words.name')}}">
+                                <input type="text" class="form-control" id="fname" name="name"
+                                       placeholder="{{__('words.name')}}">
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="lname"
+                                <input type="text" class="form-control" name="sname" id="lname"
                                        placeholder="{{__('words.surname')}}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="tel" class="form-control" id="phone" placeholder="{{__('words.phone')}}">
+                                <input type="tel" id="phone" class="form-control" name="phone" id="phone"
+                                       placeholder="{{__('words.phone')}}">
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="email" class="form-control" id="email" placeholder="{{__('words.email')}}">
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="{{__('words.email')}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" id="matn" rows="3"
-                                      placeholder="{{__('words.message')}} ..."></textarea>
+                                      placeholder="{{__('words.message')}} ..." name="text"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="d-block text-bold">Captcha</label>
+                            <div id="captcha-img">{!! captcha_img() !!}</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="captcha" class="form-control"
+                                   placeholder="{{__('words.captcha')}}">
                         </div>
                         <button type="submit" class="btn btn-primary">Yuborish</button>
                     </form>
@@ -74,4 +103,11 @@
         </div>
     </div>
     <!--Content end-->
+@stop
+@section('script')
+    <script>
+        var phone = document.getElementById("phone");
+        var res = new Inputmask("+\\9\\98(99)999-99-99", {'clearIncomplete': true});
+        res.mask(phone);
+    </script>
 @stop

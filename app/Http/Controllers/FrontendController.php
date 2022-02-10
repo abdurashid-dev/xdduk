@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Models\Document;
 use App\Models\Link;
 use App\Models\Menu;
@@ -219,5 +220,29 @@ class FrontendController extends Controller
         $socials = SocialSetting::where('is_active', 1)->get();
 //        var_dump($randomPages);
         return view('frontend.contact', compact('links', 'setting', 'socials', 'menus','randomPages'));
+    }
+
+    public function text(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required',
+            'text' => 'required',
+            'captcha' => 'required|captcha'
+        ],
+        [
+            'captcha.captcha' => 'Captcha not valid',
+            'captcha.required' => 'Captcha is required'
+        ]);
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->sname = $request->sname;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->text = $request->text;
+        $contact->save();
+
+        return redirect()->back()->with('message', 'Sizning xabar muvaffaqiyatli jo`natildi');
     }
 }

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4",
+        "ext-gd": "*",
         "artesaos/seotools": "^0.20.2",
         "barryvdh/laravel-elfinder": "^0.4.7",
         "fruitcake/laravel-cors": "^2.0",
@@ -14,6 +15,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "mews/captcha": "^3.2",
         "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {

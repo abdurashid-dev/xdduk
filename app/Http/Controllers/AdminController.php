@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Models\Link;
 use App\Models\Slider;
 use App\Models\User;
@@ -17,12 +18,14 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $contacts = Contact::where('is_read', 0)->orderByDesc('created_at')->get();
         $users = User::where('role', '!=', 'user1')->get();
         $news = Blog::count();
         $videos = Video::count();
         $sliders = Slider::count();
+        $sliderss = Slider::limit(3)->get();
         $links = Link::count();
-        return view('admin.index', compact('users', 'news', 'videos', 'sliders', 'links'));
+        return view('admin.index', compact('users', 'news', 'videos', 'sliders', 'links', 'contacts', 'sliderss'));
     }
 
     public function optimize()
@@ -86,5 +89,25 @@ class AdminController extends Controller
         } else {
             return back()->with('inactive', 'Eski parol noto`g`ri !');
         }
+    }
+
+    public function contact()
+    {
+        $contacts = Contact::orderBy('is_read')->get();
+        return view('admin.contact.index', compact('contacts'));
+    }
+
+    public function contactShow($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->update(['is_read' => 1]);
+        return view('admin.contact.show', compact('contact'));
+    }
+
+    public function contactDelete($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+        return redirect()->route('admin.contact')->with('message', 'Xabar o`chirildi !');
     }
 }
