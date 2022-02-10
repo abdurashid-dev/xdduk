@@ -69,11 +69,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     });
     //admin
     Route::middleware('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/profile/index', [AdminController::class, 'profile'])->name('profile.index');
         Route::post('/changeData/index', [AdminController::class, 'data'])->name('data.index');
         Route::get('/password/index', [AdminController::class, 'password'])->name('profile.password.index');
         Route::post('/password/index', [AdminController::class, 'passwordChange'])->name('password.change.index');
-        Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/optimize', [AdminController::class, 'optimize'])->name('optimize');
         Route::post('/status/{id}', [AdminController::class, 'status'])->name('status');
         Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
