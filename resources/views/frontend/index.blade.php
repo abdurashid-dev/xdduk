@@ -17,7 +17,7 @@
                 @foreach($lastNews as $new)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="latest-news__item">
-                            <img src="{{asset($new->image)}}">
+                            <img src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">
                             <h5 class="latest-news__item--title">
                                 <a href="{{route('new',$new->id)}}">{{$new['title_'.session('locale')]}}</a>
                             </h5>
@@ -41,7 +41,7 @@
                 @foreach($allNews as $new)
                     <div class="col-lg-6">
                         <div class="all-news__item">
-                            <img src="{{asset($new->image)}}" class="all-news__item--img">
+                            <img src="{{asset($new->image)}}" class="all-news__item--img" alt="{{$new['title_'.session('locale')]}}">
                             <div class="all-news__item--text">
                                 <h5 class="title">
                                     <a href="{{route('new', $new->id)}}">{{$new['title_'.session('locale')]}}</a>
@@ -75,7 +75,7 @@
                     <div class="video-thumbnails">
                         @foreach($videos as $video)
                             <div class="video-thumb">
-                                <img src="https://source.unsplash.com/random/8">
+                                <img src="https://source.unsplash.com/random/8" alt="{{$video->name}}">
                                 {!! $video->link !!}
                                 <h5 class="title">{{$video->name}}</h5>
                             </div>

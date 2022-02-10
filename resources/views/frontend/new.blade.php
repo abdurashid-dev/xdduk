@@ -39,7 +39,7 @@
                     <p class="date">{{$new->created_at->format('d/m/Y')}}</p>
                 </div>
                 <div class="main-content__bottom p-3">
-                    <img class="mb-4" src="{{asset($new->image)}}">
+                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">
                     {!! $new['content_'.session('locale')] !!}
                 </div>
             </div>

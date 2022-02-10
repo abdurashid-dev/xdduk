@@ -22,7 +22,7 @@
                     @foreach($news as $new)
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
                             <div class="latest-news__item">
-                                <img src="{{asset($new->image)}}">
+                                <img src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">
                                 <h5 class="latest-news__item--title">
                                     <a href="{{route('new', $new->id)}}">{{$new['title_'.session('locale')]}}</a>
                                 </h5>

@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/fa/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
-{{-- SEO TOOLS --}}
-{!! SEO::generate() !!}
-{!! OpenGraph::generate() !!}
-{!! JsonLd::generate() !!}
+    {{-- SEO TOOLS --}}
+    {!! SEO::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! JsonLd::generate() !!}
     @yield('style')
 </head>
 
@@ -111,7 +111,7 @@
             </div>
             <div class="d-flex justify-content-center">
                 <span style="width: 50%; line-height: 14px">
-                <marquee><i class="text-danger">{{__('words.test_text')}} !</i></marquee>
+{{--                <marquee><i class="text-danger">{{__('words.test_text')}} !</i></marquee>--}}
                 </span>
             </div>
             <!-- <div class="row">
@@ -308,7 +308,7 @@
             @foreach($links as $link)
                 <div class="item">
                     <a href="{{$link->link}}" target="_blank">
-                        <img src="{{asset($link->image)}}">
+                        <img src="{{asset($link->image)}}" alt="{{$link['title_'.session('locale')]}}">
                         <p>{{$link['title_'.session('locale')]}}</p>
                     </a>
                 </div>
@@ -346,6 +346,7 @@
             <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                 <h5 class="text-light">{{__('words.contact')}}</h5>
                 <p>{{__('words.address')}}: {{$setting['address_'.session('locale')]}}</p>
+                <p>{{__('words.phone')}}: <a href="tel:{{$setting->number}}" class="number">{{$setting->number}}</a>
                 <p>{{__('words.email')}}: <a href="mailto:{{$setting->email}}" class="email">{{$setting->email}}</a>
                 </p>
                 <p>{{$setting['name_'.session('locale')]}}</p>

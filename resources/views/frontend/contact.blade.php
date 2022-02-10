@@ -76,7 +76,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="tel" id="phone" class="form-control" name="phone" id="phone"
+                                <input type="tel" class="form-control" name="phone" id="phone"
                                        placeholder="{{__('words.phone')}}">
                             </div>
                             <div class="form-group col-md-6">
