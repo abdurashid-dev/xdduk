@@ -105,6 +105,7 @@
     <!--Content end-->
 @stop
 @section('script')
+    <script src="{{asset('frontend/js/inputmask.js')}}"></script>
     <script>
         var phone = document.getElementById("phone");
         var res = new Inputmask("+\\9\\98(99)999-99-99", {'clearIncomplete': true});

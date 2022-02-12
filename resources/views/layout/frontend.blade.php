@@ -367,7 +367,6 @@
 <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontend/js/darkmode-js.min.js')}}"></script>
 <script src="{{asset('frontend/js/main.js')}}"></script>
-<script src="{{asset('frontend/js/inputmask.js')}}"></script>
 @yield('script')
 </body>
 
