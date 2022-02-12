@@ -11,7 +11,6 @@
                         <p data-animation="animated fadeInRight">{{$slider->getValue('body') }}</p>
                         <a href="{{$slider->link}}" class="btn btn-primary btn-st"
                            data-animation="animated fadeInLeft">{{__('words.more')}}</a>
-                        </a>
                     </div>
                 </div>
             @endforeach
