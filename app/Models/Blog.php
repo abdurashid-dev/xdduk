@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Blog extends BaseModel
 {
     use HasFactory;
 
@@ -22,6 +22,10 @@ class Blog extends Model
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function images(){
+        return $this->hasMany(BlogImage::class);
     }
 
     public function getBlogImage( $style = 'width:100px')

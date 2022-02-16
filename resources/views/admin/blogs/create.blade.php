@@ -82,7 +82,7 @@
                                          aria-labelledby="custom-tabs-four-profile-tab">
                                         <div class="form-group">
                                             <label for="title_en">Sarlovha EN</label>
-                                            <input type="text" required class="form-control" id="title_en"
+                                            <input type="text" class="form-control" id="title_en"
                                                    name="title_en"
                                                    placeholder="Sarlovha (en)ni kiriting" value="{{old('title_en')}}">
                                         </div>
@@ -92,8 +92,7 @@
                                         <label for="floatingTextarea2">Ma'lumot En</label>
                                         <div class="form-floating mt-3">
                                         <textarea id="content_en"
-                                                  name="content_en"
-                                                  required>{{old('content_en')}}</textarea>
+                                                  name="content_en">{{old('content_en')}}</textarea>
                                             @error ('content_en')
                                             <p class="text-danger">* {{$message}}</p>
                                             @enderror
@@ -103,7 +102,7 @@
                                          aria-labelledby="custom-tabs-four-messages-tab">
                                         <div class="form-group">
                                             <label for="title_ru">Sarlovha RU</label>
-                                            <input id="title_ru" type="text" required class="form-control"
+                                            <input id="title_ru" type="text" class="form-control"
                                                    name="title_ru"
                                                    placeholder="Sarlovha (ru)ni kiriting" value="{{old('title_ru')}}">
                                         </div>
@@ -112,8 +111,7 @@
                                         @enderror
                                         <label for="floatingTextarea2">Ma'lumot Ru</label>
                                         <div class="form-floating mt-3">
-                                        <textarea id="content_ru" name="content_ru"
-                                              required>{{old('content_ru')}}</textarea>
+                                        <textarea id="content_ru" name="content_ru">{{old('content_ru')}}</textarea>
                                             @error ('content_ru')
                                             <p class="text-danger">* {{$message}}</p>
                                             @enderror
@@ -126,10 +124,17 @@
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <label>Rasm 1920x1080(tavsiya etiladi)</label>
+                    <label>Asosiy rasm</label>
                     <input type="file" required class="form-control" name="image">
                 </div>
                 @error ('image')
+                <p class="text-danger">* {{$message}}</p>
+                @enderror
+                <div class="form-group mt-3">
+                    <label>Rasmlar</label>
+                    <input type="file" class="form-control" multiple name="images[]">
+                </div>
+                @error ('images')
                 <p class="text-danger">* {{$message}}</p>
                 @enderror
                 <button type="submit" class="btn btn-primary">Saqlash</button>

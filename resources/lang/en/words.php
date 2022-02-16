@@ -66,4 +66,5 @@ The State Emblem of the Republic of Uzbekistan has the following appearance: mou
 In the color version of the State Emblem of the Republic of Uzbekistan: Humo bird and rivers - in silver; sun, ears of corn, cotton bowls and the inscription "Uzbekistan" - in gold; cotton branches and leaves, mountains and valleys - green; cotton in bowls - white; ribbon - in three different colors reflecting colors of the National flag of the Republic of Uzbekistan; octagon - the color of the air, framed by gold gilding; crescent and stars - depicted in white.',
     'captcha' => 'Enter captcha',
     'successfully_sent' => 'Your message has been successfully sent!',
+    'latest-news' => 'Latest news',
 ];

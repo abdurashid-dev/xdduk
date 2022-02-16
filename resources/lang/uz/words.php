@@ -66,5 +66,5 @@ O‘zbekiston Respublikasi Davlat gerbi quyidagi ko‘rinishga ega: tog‘lar, d
 O‘zbekiston Respublikasi Davlat gerbining rangli ko‘rinishida: Humo qushi va daryolar — kumush rangida; quyosh, boshoqlar, paxta chanoqlari va «O‘zbekiston» yozuvi — oltin rangida; g‘o‘za shoxlari va barglari, tog‘lar va vodiy — yashil rangda; chanoqlardagi paxta — oq rangda; lenta — O‘zbekiston Respublikasi Davlat bayrog‘ining ranglarini aks ettiruvchi uch xil rangda; sakkizburchak — oltin zarhal bilan hoshiyalangan holda havo rangda; yarim oy va yulduzlar — oq rangida tasvirlangan.',
     'captcha'=>'Captchani kiriting',
     'successfully_sent'=>'Xabaringiz muvaffaqiyatli yuborildi!',
-
+    'latest-news'=>'So`nggi yangiliklar'
 ];

@@ -93,13 +93,13 @@
                                                  aria-labelledby="custom-tabs-four-profile-tab">
                                                 <div class="form-group mb-3">
                                                     <label for="title_en">Title EN</label>
-                                                    <input type="text" required class="form-control" name="title_en"
+                                                    <input type="text" class="form-control" name="title_en"
                                                            value="{{$blog->title_en}}"
                                                            placeholder="Enter Title EN">
                                                 </div>
                                                 <label for="floatingTextarea2">Ma'lumot En</label>
                                                 <div class="form-floating mt-3">
-                                                <textarea id="noImage2" class="form-control" name="content_en" required
+                                                <textarea id="noImage2" class="form-control" name="content_en"
                                                           placeholder="Ma'lumot (en)ni kiriting" id="floatingTextarea2"
                                                           style="height: 100px">{{$blog->content_en}}</textarea>
                                                     @error ('content_en')
@@ -111,13 +111,13 @@
                                                  aria-labelledby="custom-tabs-four-messages-tab">
                                                 <div class="form-group mb-3">
                                                     <label for="title_ru">Title RU</label>
-                                                    <input type="text" required class="form-control" name="title_ru"
+                                                    <input type="text" class="form-control" name="title_ru"
                                                            value="{{$blog->title_ru}}"
                                                            placeholder="Enter Title RU">
                                                 </div>
                                                 <label for="floatingTextarea2">Ma'lumot Ru</label>
                                                 <div class="form-floating mt-3">
-                                                <textarea id="noImage3" class="form-control" name="content_ru" required
+                                                <textarea id="noImage3" class="form-control" name="content_ru"
                                                           placeholder="Ma'lumot (ru)ni kiriting" id="floatingTextarea2"
                                                           style="height: 100px">{{$blog->content_ru}}</textarea>
                                                     @error ('content_ru')
@@ -132,21 +132,37 @@
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Cover Image 1920x1080(recommended)</label>
+                            <label>Asosiy rasm</label>
                             <div>
                                 {!! $blog->getBlogImage() !!}
                             </div>
                             <input type="file" class="form-control" name="image">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Rasmlar</label>
+                            <div>
+                                @if(isset($blog->images))
+                                    <div class="col-md-3">
+                                        @foreach($blog->images as $image)
+                                            <img src="{{asset($image->image)}}" alt="blog image" width="100" class="img-responsive">
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                            <input type="file" class="form-control" multiple name="images[]">
+                            @error ('images')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Tahrirlash</button>
                     </div>
-            </form>
+                </form>
+            </div>
+            <!-- /.card -->
         </div>
-        <!-- /.card -->
-    </div>
     </div>
 @endsection
 @section('script')

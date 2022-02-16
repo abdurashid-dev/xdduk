@@ -50,11 +50,11 @@
                                 </li>
                                 <li class="list-group-item">
                                     <b>Yaratilgan</b>
-                                    <a class="float-right">{{$user->created_at->format('M d Y')}}</a>
+                                    <a class="float-right">{{($user->created_at)?$user->created_at->format('M d Y'):'No data'}}</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>O'zgartirilgan</b>
-                                    <a class="float-right">{{$user->updated_at->format('M d Y')}}</a>
+                                    <a class="float-right">{{($user->updated_at)?$user->updated_at->format('M d Y'):'No data'}}</a>
                                 </li>
                             </ul>
                             <a class="btn btn-primary btn-block">

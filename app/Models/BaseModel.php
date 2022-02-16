@@ -1,12 +1,4 @@
 <?php
-/*
- * *
- *   * Created by ${PRODUCT_NAME}.
- *  * User: Javier Solis Flores ( @JavierTwiteando )
- *  * Date: ${DATE}
- *  * Time: ${TIME}
- *
- */
 
 namespace App\Models;
 
@@ -30,10 +22,13 @@ class BaseModel extends Model
     }
 
 
-
     public function getValue($attribute)
     {
-        return $this[$attribute . '_' . session('locale')];
+        if ($this[$attribute . '_' . session('locale')]) {
+            return $this[$attribute . '_' . session('locale')];
+        } else {
+            return $this[$attribute . '_' . 'uz'];
+        }
     }
 
     public function editButton($url)
@@ -42,6 +37,4 @@ class BaseModel extends Model
                 <a href='%s' class='btn btn-success'><i class='fa fa-edit'></i></a>
             ", $url);
     }
-
 }
-?>

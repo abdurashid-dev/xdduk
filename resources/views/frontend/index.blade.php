@@ -12,18 +12,18 @@
     <!--News-->
     <div class="latest-news">
         <div class="container">
-            <h5><span>{{__('words.news')}}</span></h5>
+            <h5><span>{{__('words.latest-news')}}</span></h5>
             <div class="row">
                 @foreach($lastNews as $new)
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="latest-news__item">
-                            <img src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">
+                            <img src="{{asset($new->image)}}" alt="{{$new->getValue('title')}}">
                             <h5 class="latest-news__item--title">
-                                <a href="{{route('new',$new->id)}}">{{$new['title_'.session('locale')]}}</a>
+                                <a href="{{route('new',$new->id)}}">{{$new->getValue('title')}}</a>
                             </h5>
                             <p class="latest-news__item--date">{{$new->created_at->format('d/m/Y')}}</p>
                             <div class="latest-news__item--desc" style="word-break: break-all">{!!
-                        \Illuminate\Support\Str::limit(strip_tags($new['content_'.session('locale')]),150) !!}</div>
+                        \Illuminate\Support\Str::limit(strip_tags($new->getValue('content')),150) !!}</div>
                             <a href="{{route('new',$new->id)}}" class="latest-news__item--link">{{__('words.more')}}
                                 ...</a>
                         </div>
@@ -41,15 +41,15 @@
                 @foreach($allNews as $new)
                     <div class="col-lg-6">
                         <div class="all-news__item">
-                            <img src="{{asset($new->image)}}" class="all-news__item--img" alt="{{$new['title_'.session('locale')]}}">
+                            <img src="{{asset($new->image)}}" class="all-news__item--img" alt="{{$new->getValue('title')}}">
                             <div class="all-news__item--text">
                                 <h5 class="title">
-                                    <a href="{{route('new', $new->id)}}">{{$new['title_'.session('locale')]}}</a>
+                                    <a href="{{route('new', $new->id)}}">{{$new->getValue('title')}}</a>
                                 </h5>
                                 <div class="date" style="word-break: break-all">
                                 </div>
                                 <div class="latest-news__item--desc"
-                                     style="font-size: 15px !important;">{!! \Illuminate\Support\Str::limit(strip_tags($new['content_'.session('locale')]), 200) !!}</div>
+                                     style="font-size: 15px !important;">{!! \Illuminate\Support\Str::limit(strip_tags($new->getValue('content')), 200) !!}</div>
                                 <a href="{{route('new', $new->id)}}" class="link">{{__('words.more')}}...</a>
                             </div>
 

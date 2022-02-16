@@ -69,6 +69,16 @@
                             <th>Rasm</th>
                             <td>{!! $blog->getBlogImage('width:200px') !!}</td>
                         </tr>
+                        @if($blog->images)
+                            <tr>
+                                <th>Rasmlar</th>
+                                <td>
+                                    @foreach($blog->images as $image)
+                                        <img src="{{ asset($image->image) }}" alt="Image" class="img-responsive" width="200px">
+                                    @endforeach
+                                </td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
                 <!-- /.card-body -->

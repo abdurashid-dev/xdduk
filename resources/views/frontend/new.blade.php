@@ -1,4 +1,7 @@
 @extends('layout.frontend')
+@section('style')
+    <link rel="stylesheet" href="{{asset('frontend/css/jquery.fancybox.min.css')}}">
+@stop
 @section('content')
     <!--Content-->
     <div class="content">
@@ -38,12 +41,37 @@
                     <h5 class="main-content__top--title">{{$new['title_'.session('locale')]}}</h5>
                     <p class="date">{{$new->created_at->format('d/m/Y')}}</p>
                 </div>
-                <div class="main-content__bottom p-3">
-                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">
-                    {!! $new['content_'.session('locale')] !!}
+                {{--                <div class="main-content__bottom p-3">--}}
+                {{--                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">--}}
+                {{--                </div>--}}
+                <div class="main-content__bottom">
+                    <div class="main-content__bottom--carousel" width="100%">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <a href="{{asset($new->image)}}" data-fancybox="group">
+                                    <img src="{{asset($new->image)}}" alt="{{$new->getValue('title')}}"/>
+                                </a>
+                            </div>
+                            @if($new->images)
+                                @foreach($new->images as $image)
+                                    <div class="item">
+                                        <a href="{{asset($image->image)}}" data-fancybox="group">
+                                            <img src="{{asset($image->image)}}" alt="{{$new->getValue('title')}}"/>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="prev"></div>
+                        <div class="next"></div>
+                    </div>
+                    {!! $new->getValue('content') !!}
                 </div>
             </div>
         </div>
     </div>
     <!--Content end-->
+@stop
+@section('script')
+    <script src="{{asset('frontend/js/jquery.fancybox.min.js')}}"></script>
 @stop

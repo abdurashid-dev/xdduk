@@ -41,10 +41,10 @@ class FrontendController extends Controller
         $menus = Menu::with('page')->where('is_active', 1)->orderBy('order')->get();
 //        dd($menus);
         $sliders = Slider::where('is_active', 1)->get();
-        $lastNews = Blog::orderBy('created_at')->limit(4)->get();
+        $lastNews = Blog::orderByDesc('created_at')->limit(4)->get();
         $allNews = Blog::inRandomOrder()->limit(6)->get();
         $video = Video::first();
-        $videos = Video::where('is_active', 1)->orderBy('created_at')->get();
+        $videos = Video::where('is_active', 1)->orderBy('updated_at')->get();
         $links = Link::where('is_active', 1)->get();
         $setting = Setting::first();
         return view('frontend.index', compact('sliders', 'lastNews', 'allNews', 'videos', 'video', 'links', 'setting', 'menus'));
@@ -68,12 +68,13 @@ class FrontendController extends Controller
         $menus = Menu::where('is_active', 1)->orderBy('order')->get();
         $links = Link::where('is_active', 1)->get();
         $setting = Setting::firstOrFail();
-        $news = Blog::with('category')->where('is_active', 1)->paginate(8);
+        $news = Blog::with('category')->where('is_active', 1)->orderByDesc('created_at')->paginate(8);
         return view('frontend.news', compact('links', 'setting', 'news', 'menus'));
     }
 
     public function new($id)
     {
+        $new = Blog::with('category')->where('is_active', 1)->findOrFail($id);
         SEOMeta::setTitle('Yangiliklar');
         SEOMeta::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
         SEOMeta::setCanonical('https://xdduk.uz');
@@ -82,7 +83,7 @@ class FrontendController extends Controller
         OpenGraph::setTitle('Yangiliklar');
         OpenGraph::setUrl('https://xdduk.uz');
         OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('frontend/img/logo.png'));
+        OpenGraph::addImage(asset($new->image));
 
         JsonLd::setTitle('Yangiliklar');
         JsonLd::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
@@ -91,7 +92,6 @@ class FrontendController extends Controller
         $links = Link::where('is_active', 1)->get();
         $setting = Setting::firstOrFail();
         $allNews = Blog::where('id', '!=', $id)->inRandomOrder()->limit(8)->get();
-        $new = Blog::with('category')->where('is_active', 1)->findOrFail($id);
         $socials = SocialSetting::where('is_active', 1)->get();
         return view('frontend.new', compact('links', 'menus', 'setting', 'new', 'socials', 'allNews'));
     }
