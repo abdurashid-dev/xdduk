@@ -41,8 +41,16 @@
                     <h5 class="main-content__top--title">{{$new->getValue('title')}}</h5>
                     <p class="date">{{$new->created_at->format('d/m/Y')}}</p>
                 </div>
+<<<<<<< HEAD
                 <div class="main-content__bottom">
                     <div class="main-content__bottom--carousel">
+=======
+                {{--                <div class="main-content__bottom p-3">--}}
+                {{--                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">--}}
+                {{--                </div>--}}
+                <div class="main-content__bottom mb-4">
+                    <div class="main-content__bottom--carousel mt-3">
+>>>>>>> 9e4a2faf48e376f2385a9cbddcaf4543c06cbd14
                         <div class="owl-carousel owl-theme">
                             <div class="item">
                                 <a href="{{asset($new->image)}}" data-fancybox="group">
