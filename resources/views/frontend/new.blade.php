@@ -41,9 +41,6 @@
                     <h5 class="main-content__top--title">{{$new->getValue('title')}}</h5>
                     <p class="date">{{$new->created_at->format('d/m/Y')}}</p>
                 </div>
-                {{--                <div class="main-content__bottom p-3">--}}
-                {{--                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">--}}
-                {{--                </div>--}}
                 <div class="main-content__bottom">
                     <div class="main-content__bottom--carousel">
                         <div class="owl-carousel owl-theme">
