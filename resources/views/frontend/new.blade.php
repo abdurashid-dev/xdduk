@@ -12,7 +12,7 @@
                     @foreach($allNews as $item)
                         <div class="side-bar__items--item">
                             <h5 class="title">
-                                <a href="{{route('new', $item->id)}}">{{$item['title_'.session('locale')]}}</a>
+                                <a href="{{route('new', $item->id)}}">{{$item->getValue('title')}}</a>
                             </h5>
                             <p class="date">13/12/2021</p>
                         </div>
@@ -24,7 +24,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('index')}}">{{__('words.home')}}</a></li>
                         <li class="breadcrumb-item"><a href="{{route('news')}}">{{__('words.news')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{$new['title_'.session('locale')]}}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{$new->getValue('title')}}</li>
                     </ol>
                 </nav>
                 <div class="options">
@@ -38,14 +38,14 @@
                     </button>
                 </div>
                 <div class="main-content__top">
-                    <h5 class="main-content__top--title">{{$new['title_'.session('locale')]}}</h5>
+                    <h5 class="main-content__top--title">{{$new->getValue('title')}}</h5>
                     <p class="date">{{$new->created_at->format('d/m/Y')}}</p>
                 </div>
                 {{--                <div class="main-content__bottom p-3">--}}
                 {{--                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">--}}
                 {{--                </div>--}}
                 <div class="main-content__bottom">
-                    <div class="main-content__bottom--carousel" width="100%">
+                    <div class="main-content__bottom--carousel">
                         <div class="owl-carousel owl-theme">
                             <div class="item">
                                 <a href="{{asset($new->image)}}" data-fancybox="group">
