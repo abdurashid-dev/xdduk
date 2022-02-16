@@ -75,18 +75,18 @@ class FrontendController extends Controller
     public function new($id)
     {
         $new = Blog::with('category')->where('is_active', 1)->findOrFail($id);
-        SEOMeta::setTitle('Yangiliklar');
-        SEOMeta::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        SEOMeta::setTitle($new->getValue('title'));
+        SEOMeta::setDescription(Str::limit($new->getValue('content'), 150));
         SEOMeta::setCanonical('https://xdduk.uz');
 
-        OpenGraph::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
-        OpenGraph::setTitle('Yangiliklar');
+        OpenGraph::setDescription(Str::limit($new->getValue('content'), 150));
+        OpenGraph::setTitle($new->getValue('title'));
         OpenGraph::setUrl('https://xdduk.uz');
         OpenGraph::addProperty('type', 'articles');
         OpenGraph::addImage(asset($new->image));
 
-        JsonLd::setTitle('Yangiliklar');
-        JsonLd::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        JsonLd::setTitle($new->getValue('title'));
+        JsonLd::setDescription(Str::limit($new->getValue('content'), 150));
 
         $menus = Menu::where('is_active', 1)->orderBy('order')->get();
         $links = Link::where('is_active', 1)->get();
