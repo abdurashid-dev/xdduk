@@ -44,8 +44,8 @@
                 {{--                <div class="main-content__bottom p-3">--}}
                 {{--                    <img class="mb-4" src="{{asset($new->image)}}" alt="{{$new['title_'.session('locale')]}}">--}}
                 {{--                </div>--}}
-                <div class="main-content__bottom">
-                    <div class="main-content__bottom--carousel">
+                <div class="main-content__bottom mb-4">
+                    <div class="main-content__bottom--carousel mt-3">
                         <div class="owl-carousel owl-theme">
                             <div class="item">
                                 <a href="{{asset($new->image)}}" data-fancybox="group">
