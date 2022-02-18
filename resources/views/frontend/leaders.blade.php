@@ -33,7 +33,7 @@
                 </button>
             </div>
             <div class="main-content__top">
-                <h5 class="main-content__top--title">Rahbariyat</h5>
+                <h5 class="main-content__top--title">{{__('words.leaders')}}</h5>
             </div>
             <div class="main-content__bottom">
                 <div class="admins">
@@ -49,19 +49,19 @@
                                 <div class="details">
                                     <p>
                                         <i class="fas fa-phone-square-alt"></i>
-                                        Telefon: <a href="tel:{{$leader->number}}">{{$leader->number}}</a>
+                                        {{__('words.phone')}}: <a href="tel:{{$leader->number}}">{{$leader->number}}</a>
                                     </p>
                                     <p>
                                         <i class="fas fa-envelope-open-text"></i>
-                                        Email: <a href="mailto:{{$leader->email}}">{{$leader->email}}</a>
+                                        {{__('words.email')}}: <a href="mailto:{{$leader->email}}">{{$leader->email}}</a>
                                     </p>
                                     <p>
                                         <i class="far fa-clock"></i>
-                                        {{$leader['time_'.session('locale')]}}
+                                        {{$leader->getValue('time')}}
                                     </p>
 
                                 </div>
-                                <a href="{{route('leader', $leader->id)}}">Tarjimai hol</a>
+                                <a href="{{route('leader', $leader->id)}}">{{__('words.bio')}}</a>
                             </div>
                         </div>
                     </div>
