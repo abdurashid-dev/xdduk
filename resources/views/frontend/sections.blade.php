@@ -9,7 +9,7 @@
                     @foreach($randomPages as $page)
                         <div class="side-bar__items--item">
                             <h5 class="title">
-                                <a href="{{route('page',$page->slug)}}">{{$page['name_'.session('locale')]}}</a>
+                                <a href="{{route('page',$page->slug)}}">{{$page->getValue('name')}}</a>
                             </h5>
                         </div>
                     @endforeach
@@ -39,14 +39,14 @@
                     <div class="admins">
                         @foreach ($sections as $section)
                             <div class="admin">
-                                <h5 class="admin__title">{{$section->position}}</h5>
+                                <h5 class="admin__title">{{$section->getValue('position')}}</h5>
                                 <div class="admin__info">
                                     <div class="admin__info--img">
-                                        <img src="{{asset($section->image)}}" alt="{{$section->name}}"
+                                        <img src="{{asset($section->image)}}" alt="{{$section->getValue('name')}}"
                                              style="object-fit: contain" class="admin__info--img">
                                     </div>
                                     <div class="admin__info--text">
-                                        <h5 class="title">{{$section->name}}</h5>
+                                        <h5 class="title">{{$section->getValue('name')}}</h5>
                                         <div class="details">
                                             <p>
                                                 <i class="fas fa-phone-square-alt"></i>

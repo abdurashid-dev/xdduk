@@ -15,75 +15,82 @@
     @csrf
     <div class="card">
         <div class="card-body">
-            <div class="form-group">
-                <label for="name">FIO</label>
-                <input type="text" required class="form-control" name="name" placeholder="FIO ni kiriting"
-                    value="{{old('name')}}">
-            </div>
-            @error ('name')
-            <p class="text-danger">* {{$message}}</p>
-            @enderror
-            <div class="form-group">
-                <label for="position">Lavozimi</label>
-                <input type="text" required class="form-control" name="position" placeholder="Vazifasi kiriting"
-                    value="{{old('position')}}">
-            </div>
-            @error ('position')
-            <p class="text-danger">* {{$message}}</p>
-            @enderror
-            <div class="form-group">
-                <label for="image">Rasm</label>
-                <input type="file" required class="form-control" name="image" placeholder="Rasmni kiriting"
-                    value="{{old('image')}}">
-            </div>
-            @error ('image')
-            <p class="text-danger">* {{$message}}</p>
-            @enderror
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" required class="form-control" name="email" placeholder="Emailni kiriting"
-                    value="{{old('email')}}">
-            </div>
-            @error ('email')
-            <p class="text-danger">* {{$message}}</p>
-            @enderror
-            <div class="form-group">
-                <label for="number">Telefon raqami</label>
-                <input type="text" required class="form-control" name="number" placeholder="Telefon raqamni kiriting"
-                    value="{{old('number')}}">
-            </div>
-            @error ('number')
-            <p class="text-danger">* {{$message}}</p>
-            @enderror
             <div class="card card-primary card-outline card-tabs">
                 <div class="card-header p-0 pt-1 border-bottom-0">
                     <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill"
-                                href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home"
-                                aria-selected="true">Uzbek</a>
+                               href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home"
+                               aria-selected="true">Uzbek</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill"
-                                href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile"
-                                aria-selected="false">English</a>
+                               href="#custom-tabs-three-profile" role="tab"
+                               aria-controls="custom-tabs-three-profile"
+                               aria-selected="false">English</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill"
-                                href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages"
-                                aria-selected="false">Russian</a>
+                               href="#custom-tabs-three-messages" role="tab"
+                               aria-controls="custom-tabs-three-messages"
+                               aria-selected="false">Russian</a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content" id="custom-tabs-three-tabContent">
                         <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel"
-                            aria-labelledby="custom-tabs-three-home-tab">
+                             aria-labelledby="custom-tabs-three-home-tab">
+                            <div class="form-group">
+                                <label for="name">FIO (uz)</label>
+                                <input type="text" required class="form-control" name="name_uz"
+                                       placeholder="FIO (uz) ni kiriting"
+                                       value="{{old('name_uz')}}">
+                            </div>
+                            @error ('name_uz')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
+                            <div class="form-group">
+                                <label for="position">Lavozimi (uz)</label>
+                                <input type="text" required class="form-control" name="position_uz"
+                                       placeholder="Lavozimini kiriting (uz)"
+                                       value="{{old('position_uz')}}">
+                            </div>
+                            @error ('position_uz')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
+                            <div class="form-group">
+                                <label for="image">Rasm</label>
+                                <input type="file" required class="form-control" name="image"
+                                       placeholder="Rasmni kiriting"
+                                       value="{{old('image')}}">
+                            </div>
+                            @error ('image')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" required class="form-control" name="email"
+                                       placeholder="Emailni kiriting"
+                                       value="{{old('email')}}">
+                            </div>
+                            @error ('email')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
+                            <div class="form-group">
+                                <label for="number">Telefon raqami</label>
+                                <input type="text" required class="form-control" name="number"
+                                       placeholder="Telefon raqamni kiriting"
+                                       value="{{old('number')}}">
+                            </div>
+                            @error ('number')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
                             <div class="form-group">
                                 <label for="time_uz">Ish kunlari (uz)</label>
                                 <input type="text" required class="form-control" name="time_uz"
-                                    placeholder="Ish kunlarini(uz) kiriting" value="{{old('time_uz')}}">
+                                       placeholder="Ish kunlarini(uz) kiriting" value="{{old('time_uz')}}">
                             </div>
                             @error ('time_uz')
                             <p class="text-danger">* {{$message}}</p>
@@ -97,11 +104,29 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
-                            aria-labelledby="custom-tabs-three-profile-tab">
+                             aria-labelledby="custom-tabs-three-profile-tab">
+                            <div class="form-group">
+                                <label for="name">FIO (en)</label>
+                                <input type="text" class="form-control" name="name_en"
+                                       placeholder="FIO (en) ni kiriting"
+                                       value="{{old('name_en')}}">
+                            </div>
+                            @error ('name_en')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
+                            <div class="form-group">
+                                <label for="position">Lavozimi (en)</label>
+                                <input type="text" class="form-control" name="position_en"
+                                       placeholder="Lavozimini kiriting (en)"
+                                       value="{{old('position_en')}}">
+                            </div>
+                            @error ('position_en')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
                             <div class="form-group">
                                 <label for="time_en">Ish kunlari (en)</label>
                                 <input type="text" class="form-control" name="time_en"
-                                    placeholder="Ish kunlarini(en) kiriting" value="{{old('time_en')}}">
+                                       placeholder="Ish kunlarini(en) kiriting" value="{{old('time_en')}}">
                             </div>
                             @error ('time_en')
                             <p class="text-danger">* {{$message}}</p>
@@ -115,11 +140,29 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel"
-                            aria-labelledby="custom-tabs-three-messages-tab">
+                             aria-labelledby="custom-tabs-three-messages-tab">
+                            <div class="form-group">
+                                <label for="name">FIO (ru)</label>
+                                <input type="text" class="form-control" name="name_ru"
+                                       placeholder="FIO (ru) ni kiriting"
+                                       value="{{old('name_ru')}}">
+                            </div>
+                            @error ('name_ru')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
+                            <div class="form-group">
+                                <label for="position">Lavozimi (ru)</label>
+                                <input type="text" class="form-control" name="position_ru"
+                                       placeholder="Lavozimini kiriting (ru)"
+                                       value="{{old('position_ru')}}">
+                            </div>
+                            @error ('position_ru')
+                            <p class="text-danger">* {{$message}}</p>
+                            @enderror
                             <div class="form-group">
                                 <label for="time_ru">Ish kunlari (ru)</label>
                                 <input type="text" class="form-control" name="time_ru"
-                                    placeholder="Ish kunlarini(en) kiriting" value="{{old('time_ru')}}">
+                                       placeholder="Ish kunlarini(en) kiriting" value="{{old('time_ru')}}">
                             </div>
                             @error ('time_ru')
                             <p class="text-danger">* {{$message}}</p>
@@ -140,6 +183,7 @@
             </div>
             <input type="submit" value="Saqlash" class="btn btn-primary">
         </div>
+    </div>
 </form>
 </div>
 @endsection

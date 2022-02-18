@@ -32,8 +32,8 @@
                         @foreach($sections as $section)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
-                                <td>{{$section->name}}</td>
-                                <td>{{$section->position}}</td>
+                                <td>{{$section->name_uz}}</td>
+                                <td>{{$section->position_uz}}</td>
                                 <td>{{$section->number}}</td>
                                 <td>
                                     <div class="btn-group">

@@ -9,7 +9,7 @@
                     @foreach($randomPages as $page)
                         <div class="side-bar__items--item">
                             <h5 class="title">
-                                <a href="{{route('page',$page->slug)}}">{{$page['name_'.session('locale')]}}</a>
+                                <a href="{{route('page',$page->slug)}}">{{$page->getValue('name')}}</a>
                             </h5>
                         </div>
                     @endforeach
@@ -20,7 +20,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('index')}}">{{__('words.home')}}</a></li>
                         <li class="breadcrumb-item"><a href="{{route('sections')}}">{{__('words.sections')}}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{$section->name}}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{$section->getValue('name')}}</li>
                     </ol>
                 </nav>
                 <div class="options">
@@ -34,7 +34,7 @@
                     </button>
                 </div>
                 <div class="main-content__top">
-                    <h5 class="main-content__top--title">{{$section->name}}</h5>
+                    <h5 class="main-content__top--title">{{$section->getValue('name')}}</h5>
                 </div>
                 <div class="main-content__bottom">
                     {!! $section->getImage('width:100%; object-fit:contain') !!}

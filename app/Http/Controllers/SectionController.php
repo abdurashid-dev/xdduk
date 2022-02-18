@@ -38,15 +38,19 @@ class SectionController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
+            'name_uz' => 'required|max:255',
+            'name_en' => 'max:255',
+            'name_ru' => 'max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
             'bio_uz' => 'required',
             'bio_en' => '',
             'bio_ru' => '',
             'time_uz' => 'required|max:255',
             'time_en' => 'max:255',
             'time_ru' => 'max:255',
-            'position' => 'required|max:255',
+            'position_uz' => 'required|max:255',
+            'position_en' => 'max:255',
+            'position_ru' => 'max:255',
             'number' => ['required','max:255', new PhoneNumber],
             'email' => 'required|max:255|email',
         ]);
@@ -95,7 +99,9 @@ class SectionController extends Controller
     public function update(Request $request, Section $section)
     {
         $data = $request->validate([
-            'name' => 'required|max:255',
+            'name_uz' => 'required|max:255',
+            'name_en' => 'max:255',
+            'name_ru' => 'max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
             'bio_uz' => 'required',
             'bio_en' => '',
@@ -103,7 +109,9 @@ class SectionController extends Controller
             'time_uz' => 'required|max:255',
             'time_en' => 'max:255',
             'time_ru' => 'max:255',
-            'position' => 'required|max:255',
+            'position_uz' => 'required|max:255',
+            'position_en' => 'max:255',
+            'position_ru' => 'max:255',
             'number' => ['required','max:255', new PhoneNumber],
             'email' => 'required|max:255|email',
         ]);

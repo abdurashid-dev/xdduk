@@ -183,6 +183,7 @@
                 </div>
                 <input type="submit" value="Saqlash" class="btn btn-primary">
             </div>
+        </div>
     </form>
     </div>
 @endsection
