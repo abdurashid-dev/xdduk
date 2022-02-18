@@ -35,13 +35,15 @@
                 </div>
                 <div class="main-content__top">
                     <h5 class="main-content__top--title">{{$leader->getValue('name')}}</h5>
+                    <p class="date">{{$leader->created_at->format('m/d/Y')}}</p>
                 </div>
-                <div class="main-content__bottom">
-                    {!! $leader->getLeaderImage('width:100%; object-fit:contain') !!}
-                    <br>
-                    <div class="p-3">
-                        {!!$leader->getValue('bio')!!}
+                <div class="main-content__bottom mb-4">
+                    <div class="main-content__bottom--img mt-3">
+                        {!! $leader->getImage('image') !!}
                     </div>
+                    <p class="desc">
+                        {!! $leader->getValue('bio') !!}
+                    </p>
                 </div>
             </div>
         </div>

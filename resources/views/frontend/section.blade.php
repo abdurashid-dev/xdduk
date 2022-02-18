@@ -35,13 +35,15 @@
                 </div>
                 <div class="main-content__top">
                     <h5 class="main-content__top--title">{{$section->getValue('name')}}</h5>
+                    <p class="date">{{$section->created_at->format('m/d/Y')}}</p>
                 </div>
-                <div class="main-content__bottom">
-                    {!! $section->getImage('width:100%; object-fit:contain') !!}
-                    <br>
-                    <div class="p-3">
-                        {!!$section->getValue('bio')!!}
+                <div class="main-content__bottom mb-4">
+                    <div class="main-content__bottom--img mt-3">
+                        {!! $section->getImage('image') !!}
                     </div>
+                    <p class="desc">
+                        {!! $section->getValue('bio') !!}
+                    </p>
                 </div>
             </div>
         </div>
