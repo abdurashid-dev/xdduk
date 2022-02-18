@@ -18,9 +18,9 @@
 </head>
 
 <body>
-<div id="preloader">
+<!--div id="preloader">
     <div id="loader"></div>
-</div>
+</div>-->
 <div class="goTop"></div>
 
 <!--Navigation-->

@@ -124,24 +124,24 @@ class FrontendController extends Controller
 
     public function section($id)
     {
-        SEOMeta::setTitle('Hududiy boʻlinmalar');
-        SEOMeta::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        $section = Section::findOrFail($id);
+        SEOMeta::setTitle($section->getValue('name'));
+        SEOMeta::setDescription(strip_tags($section->getValue('bio')));
         SEOMeta::setCanonical('https://xdduk.uz');
 
-        OpenGraph::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
-        OpenGraph::setTitle('Hududiy boʻlinmalar');
+        OpenGraph::setDescription(strip_tags($section->getValue('bio')));
+        OpenGraph::setTitle($section->getValue('name'));
         OpenGraph::setUrl('https://xdduk.uz');
         OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('frontend/img/logo.png'));
+        OpenGraph::addImage(asset($section->image));
 
-        JsonLd::setTitle('Hududiy boʻlinmalar');
-        JsonLd::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        JsonLd::setTitle($section->getValue('name'));
+        JsonLd::setDescription(strip_tags($section->getValue('bio')));
 
         $randomPages = Page::with('menu')->where('is_active', 1)->inRandomOrder()->limit(5)->get();
         $menus = Menu::where('is_active', 1)->orderBy('order')->get();
         $links = Link::where('is_active', 1)->get();
         $setting = Setting::firstOrFail();
-        $section = Section::findOrFail($id);
         $socials = SocialSetting::where('is_active', 1)->get();
         return view('frontend.section', compact('links', 'setting', 'socials', 'section', 'menus', 'randomPages'));
     }
@@ -172,24 +172,24 @@ class FrontendController extends Controller
 
     public function leader($id)
     {
-        SEOMeta::setTitle('Rahbariyat');
-        SEOMeta::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        $leader = Leader::findOrFail($id);
+        SEOMeta::setTitle($leader->getValue('name'));
+        SEOMeta::setDescription(strip_tags($leader->getValue('bio')));
         SEOMeta::setCanonical('https://xdduk.uz');
 
-        OpenGraph::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
-        OpenGraph::setTitle('Rahbariyat');
+        OpenGraph::setDescription(strip_tags($leader->getValue('bio')));
+        OpenGraph::setTitle($leader->getValue('name'));
         OpenGraph::setUrl('https://xdduk.uz');
         OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('frontend/img/logo.png'));
+        OpenGraph::addImage(asset($leader->image));
 
-        JsonLd::setTitle('Rahbariyat');
-        JsonLd::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        JsonLd::setTitle($leader->getValue('name'));
+        JsonLd::setDescription(strip_tags($leader->getValue('bio')));
 
         $randomPages = Page::with('menu')->where('is_active', 1)->inRandomOrder()->limit(5)->get();
         $menus = Menu::where('is_active', 1)->orderBy('order')->get();
         $links = Link::where('is_active', 1)->get();
         $setting = Setting::firstOrFail();
-        $leader = Leader::findOrFail($id);
         $socials = SocialSetting::where('is_active', 1)->get();
         return view('frontend.leader', compact('links', 'setting', 'socials', 'leader', 'menus', 'randomPages'));
     }
