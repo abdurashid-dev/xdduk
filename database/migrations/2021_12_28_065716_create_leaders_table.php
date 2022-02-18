@@ -15,16 +15,20 @@ class CreateLeadersTable extends Migration
     {
         Schema::create('leaders', function (Blueprint $table) {
             $table->id();
-            $table->string('position');
-            $table->string('name');
+            $table->string('position_uz');
+            $table->string('position_en')->nullable();
+            $table->string('position_ru')->nullable();
+            $table->string('name_uz');
+            $table->string('name_en')->nullable();
+            $table->string('name_ru')->nullable();
             $table->string('number');
             $table->string('email');
             $table->string('time_uz');
-            $table->string('time_en');
-            $table->string('time_ru');
+            $table->string('time_en')->nullable();
+            $table->string('time_ru')->nullable();
             $table->longText('bio_uz');
-            $table->longText('bio_en');
-            $table->longText('bio_ru');
+            $table->longText('bio_en')->nullable();
+            $table->longText('bio_ru')->nullable();
             $table->string('image');
             $table->timestamps();
         });

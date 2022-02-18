@@ -39,13 +39,13 @@
                 <div class="admins">
                     @foreach ($leaders as $leader)
                     <div class="admin">
-                        <h5 class="admin__title">{{$leader->position}}</h5>
+                        <h5 class="admin__title">{{$leader->getValue('position')}}</h5>
                         <div class="admin__info">
                             <div class="admin__info--img">
-                                <img src="{{asset($leader->image)}}" alt="{{$leader->name}}" style="object-fit: contain" class="admin__info--img">
+                                <img src="{{asset($leader->image)}}" alt="{{$leader->getValue('name')}}" style="object-fit: contain" class="admin__info--img">
                             </div>
                             <div class="admin__info--text">
-                                <h5 class="title">{{$leader->name}}</h5>
+                                <h5 class="title">{{$leader->getValue('name')}}</h5>
                                 <div class="details">
                                     <p>
                                         <i class="fas fa-phone-square-alt"></i>

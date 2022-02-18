@@ -32,8 +32,8 @@
                         @foreach($leaders as $leader)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
-                                <td>{{$leader->name}}</td>
-                                <td>{{$leader->position}}</td>
+                                <td>{{$leader->name_uz}}</td>
+                                <td>{{$leader->position_uz}}</td>
                                 <td>{{$leader->number}}</td>
                                 <td>
                                     <div class="btn-group">

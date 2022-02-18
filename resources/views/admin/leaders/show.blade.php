@@ -27,9 +27,21 @@ Leader show
                         <td>{{ $leader->id }}</td>
                     </tr>
                     <tr>
-                        <th>FIO</th>
+                        <th>FIO (uz)</th>
                         <td>
-                            {{ $leader->name }}
+                            {{ $leader->name_uz }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>FIO (en)</th>
+                        <td>
+                            {{ $leader->name_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>FIO (ru)</th>
+                        <td>
+                            {{ $leader->name_ru }}
                         </td>
                     </tr>
                     <tr>
@@ -41,8 +53,16 @@ Leader show
                         <td>{{ $leader->number }}</td>
                     </tr>
                     <tr>
-                        <th>Lavozimi</th>
-                        <td>{{ $leader->position }}</td>
+                        <th>Lavozimi (uz)</th>
+                        <td>{{ $leader->position_uz }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lavozimi (en)</th>
+                        <td>{{ $leader->position_en }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lavozimi (ru)</th>
+                        <td>{{ $leader->position_ru }}</td>
                     </tr>
                     <tr>
                         <th>Ish vaqtlari (uz)</th>
