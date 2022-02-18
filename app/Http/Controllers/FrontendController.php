@@ -9,6 +9,7 @@ use App\Models\Link;
 use App\Models\Menu;
 use App\Models\Offer;
 use App\Models\Page;
+use App\Models\Section;
 use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\SocialSetting;
@@ -95,6 +96,54 @@ class FrontendController extends Controller
         $allNews = Blog::where('id', '!=', $id)->inRandomOrder()->limit(8)->get();
         $socials = SocialSetting::where('is_active', 1)->get();
         return view('frontend.new', compact('links', 'menus', 'setting', 'new', 'socials', 'allNews'));
+    }
+
+    public function sections()
+    {
+        SEOMeta::setTitle('Hududiy boʻlinmalar');
+        SEOMeta::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        SEOMeta::setCanonical('https://xdduk.uz');
+
+        OpenGraph::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        OpenGraph::setTitle('Hududiy boʻlinmalar');
+        OpenGraph::setUrl('https://xdduk.uz');
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('frontend/img/logo.png'));
+
+        JsonLd::setTitle('Hududiy boʻlinmalar');
+        JsonLd::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+
+        $randomPages = Page::with('menu')->where('is_active', 1)->inRandomOrder()->limit(5)->get();
+        $menus = Menu::where('is_active', 1)->orderBy('order')->get();
+        $links = Link::where('is_active', 1)->get();
+        $setting = Setting::firstOrFail();
+        $sections = Section::orderByDesc('created_at')->get();
+        $socials = SocialSetting::where('is_active', 1)->get();
+        return view('frontend.sections', compact('links', 'setting', 'socials', 'sections', 'menus', 'randomPages'));
+    }
+
+    public function section($id)
+    {
+        SEOMeta::setTitle('Hududiy boʻlinmalar');
+        SEOMeta::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        SEOMeta::setCanonical('https://xdduk.uz');
+
+        OpenGraph::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+        OpenGraph::setTitle('Hududiy boʻlinmalar');
+        OpenGraph::setUrl('https://xdduk.uz');
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('frontend/img/logo.png'));
+
+        JsonLd::setTitle('Hududiy boʻlinmalar');
+        JsonLd::setDescription('Xavfsiz daryo unitar korxonasining rasmiy sayti');
+
+        $randomPages = Page::with('menu')->where('is_active', 1)->inRandomOrder()->limit(5)->get();
+        $menus = Menu::where('is_active', 1)->orderBy('order')->get();
+        $links = Link::where('is_active', 1)->get();
+        $setting = Setting::firstOrFail();
+        $section = Section::findOrFail($id);
+        $socials = SocialSetting::where('is_active', 1)->get();
+        return view('frontend.section', compact('links', 'setting', 'socials', 'section', 'menus', 'randomPages'));
     }
 
     public function leaders()

@@ -167,6 +167,9 @@
                             <a class="nav-link" href="{{route('leaders')}}">{{__('words.leaders')}}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{route('sections')}}">Hududiy boʻlinmalar</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{route('news')}}">{{__('words.news')}}</a>
                         </li>
                         <li class="nav-item">

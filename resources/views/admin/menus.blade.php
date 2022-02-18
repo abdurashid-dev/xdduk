@@ -154,7 +154,7 @@
             <li class="nav-item">
                 <a href="{{route('admin.sections.index')}}"
                    class="nav-link {{(request()->is('admin/sections*'))? 'active':''}}">
-                    <i class="nav-icon fas fa-user-tie"></i>
+                    <i class="nav-icon fas fa-puzzle-piece"></i>
                     <p>
                         Hududiy boʻlinmalar
                     </p>

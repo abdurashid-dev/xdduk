@@ -42,6 +42,8 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/all-news', [FrontendController::class, 'news'])->name('news');
 Route::get('/new/{id}', [FrontendController::class, 'new'])->name('new');
+Route::get('/sections', [FrontendController::class, 'sections'])->name('sections');
+Route::get('/section/{id}', [FrontendController::class, 'section'])->name('section');
 Route::get('/leaders', [FrontendController::class, 'leaders'])->name('leaders');
 Route::get('/leader/{id}', [FrontendController::class, 'leader'])->name('leader');
 Route::get('/page/{slug}', [FrontendController::class, 'page'])->name('page');
