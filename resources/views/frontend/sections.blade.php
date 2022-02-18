@@ -33,7 +33,7 @@
                     </button>
                 </div>
                 <div class="main-content__top">
-                    <h5 class="main-content__top--title">Hududiy boʻlinmalar</h5>
+                    <h5 class="main-content__top--title">{{__('words.sections')}}</h5>
                 </div>
                 <div class="main-content__bottom">
                     <div class="admins">
@@ -50,18 +50,18 @@
                                         <div class="details">
                                             <p>
                                                 <i class="fas fa-phone-square-alt"></i>
-                                                Telefon: <a href="tel:{{$section->number}}">{{$section->number}}</a>
+                                                {{__('words.phone')}}: <a href="tel:{{$section->number}}">{{$section->number}}</a>
                                             </p>
                                             <p>
                                                 <i class="fas fa-envelope-open-text"></i>
-                                                Email: <a href="mailto:{{$section->email}}">{{$section->email}}</a>
+                                                {{__('words.email')}}: <a href="mailto:{{$section->email}}">{{$section->email}}</a>
                                             </p>
                                             <p>
                                                 <i class="far fa-clock"></i>
-                                                {{$section['time_'.session('locale')]}}
+                                                {{$section->getValue('time')}}
                                             </p>
                                         </div>
-                                        <a href="{{route('section',$section->id)}}">Tarjimai hol</a>
+                                        <a href="{{route('section',$section->id)}}">{{__('words.bio')}}</a>
                                     </div>
                                 </div>
                             </div>

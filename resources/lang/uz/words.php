@@ -68,4 +68,5 @@ O‘zbekiston Respublikasi Davlat gerbining rangli ko‘rinishida: Humo qushi va
     'successfully_sent'=>'Xabaringiz muvaffaqiyatli yuborildi!',
     'latest-news'=>'So`nggi yangiliklar',
     'sections'=>'Hududiy boʻlinmalar',
+    'bio'=>'Tarjimai hol',
 ];
