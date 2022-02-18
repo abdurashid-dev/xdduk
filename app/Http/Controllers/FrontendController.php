@@ -199,6 +199,7 @@ class FrontendController extends Controller
         $offers = Offer::where('is_active', 1)->orderByDesc('created_at')->get();
         return view('frontend.offers', compact('links', 'setting', 'socials', 'menus', 'offers'));
     }
+
     public function contact()
     {
         SEOMeta::setTitle('Bog`lanish');
@@ -220,7 +221,7 @@ class FrontendController extends Controller
         $setting = Setting::firstOrFail();
         $socials = SocialSetting::where('is_active', 1)->get();
 //        var_dump($randomPages);
-        return view('frontend.contact', compact('links', 'setting', 'socials', 'menus','randomPages'));
+        return view('frontend.contact', compact('links', 'setting', 'socials', 'menus', 'randomPages'));
     }
 
     public function text(Request $request)
@@ -232,10 +233,10 @@ class FrontendController extends Controller
             'text' => 'required',
             'captcha' => 'required|captcha'
         ],
-        [
-            'captcha.captcha' => 'Captcha not valid',
-            'captcha.required' => 'Captcha is required'
-        ]);
+            [
+                'captcha.captcha' => 'Captcha not valid',
+                'captcha.required' => 'Captcha is required'
+            ]);
         $contact = new Contact();
         $contact->name = $request->name;
         $contact->sname = $request->sname;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\OfferController;
 use App\Models\Document;
 use App\Models\Offer;
@@ -91,6 +92,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
             'videos' => VideoController::class,
             'links' => LinkController::class,
             'leaders' => LeaderController::class,
+            'sections' => SectionController::class,
             'sliders' => SliderController::class,
             'settings' => SettingController::class,
             'social' => SocialSettingController::class,

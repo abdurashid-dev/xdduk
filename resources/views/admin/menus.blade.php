@@ -151,6 +151,15 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('admin.sections.index')}}"
+                   class="nav-link {{(request()->is('admin/sections*'))? 'active':''}}">
+                    <i class="nav-icon fas fa-user-tie"></i>
+                    <p>
+                        Hududiy boʻlinmalar
+                    </p>
+                </a>
+            </li>
             <li class="nav-item @if(request()->is('admin/menus*') || request()->is('admin/pages*')) menu-open @endif">
                 <a href="#"
                    class="nav-link @if (request()->is('admin/menus*') || request()->is('admin/pages*')) active @endif">
