@@ -27,9 +27,21 @@ Section show
                         <td>{{ $section->id }}</td>
                     </tr>
                     <tr>
-                        <th>FIO</th>
+                        <th>FIO (uz)</th>
                         <td>
-                            {{ $section->name }}
+                            {{ $section->name_uz }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>FIO (en)</th>
+                        <td>
+                            {{ $section->name_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>FIO (ru)</th>
+                        <td>
+                            {{ $section->name_ru }}
                         </td>
                     </tr>
                     <tr>
@@ -41,8 +53,16 @@ Section show
                         <td>{{ $section->number }}</td>
                     </tr>
                     <tr>
-                        <th>Lavozimi</th>
-                        <td>{{ $section->position }}</td>
+                        <th>Lavozimi (uz)</th>
+                        <td>{{ $section->position_uz }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lavozimi (en)</th>
+                        <td>{{ $section->position_en }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lavozimi (ru)</th>
+                        <td>{{ $section->position_ru }}</td>
                     </tr>
                     <tr>
                         <th>Ish vaqtlari (uz)</th>
