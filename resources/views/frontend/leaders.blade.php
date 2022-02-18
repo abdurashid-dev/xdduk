@@ -9,7 +9,7 @@
                 @foreach($randomPages as $page)
                     <div class="side-bar__items--item">
                         <h5 class="title">
-                            <a href="{{route('page',$page->slug)}}">{{$page['name_'.session('locale')]}}</a>
+                            <a href="{{route('page',$page->slug)}}">{{$page->getValue('name')}}</a>
                         </h5>
                     </div>
                 @endforeach
