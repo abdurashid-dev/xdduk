@@ -67,4 +67,5 @@ In the color version of the State Emblem of the Republic of Uzbekistan: Humo bir
     'captcha' => 'Enter captcha',
     'successfully_sent' => 'Your message has been successfully sent!',
     'latest-news' => 'Latest news',
+    'sections' => 'Territorial subdivisions',
 ];
